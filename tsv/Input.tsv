@@ -1,0 +1,4 @@
+!!SBtab	Document='D1 LTP time window' SBtabVersion='1.0' TableName='Input' TableTitle='Input Parameter List, dynamics are hardcoded into model' TableType='Quantity'		
+!ID	!Name	!DefaultValue	!Unit
+INP0	DA_start	100	millisecond
+INP1	DA_max	1480	nanomole/liter

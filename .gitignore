@@ -1,0 +1,9 @@
+**/Data/*.mat
+**/Data/*.sbproj
+*.sbproj
+**/Results/*
+!**/Results/Analysis_GSA_example/
+!**/Results/Analysis_diagnostics_example/
+**/Formulas/*.m
+**/Data/Exp/*.mat
+*.xml
