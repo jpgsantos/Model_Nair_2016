@@ -5,11 +5,11 @@ function [stg] = f_settings_all_TW()
 
 % True or false to decide whether to run import functions
 % (Import)
-stg.import = false;
+stg.import = true;
 
 % Name of the folder where everything related to the model is stored
 % (Folder Model)
-stg.folder_model = "D1_LTP_time_window";
+stg.folder_model = "Model_D1_LTP_time_window";
 
 % Name of the excel file with the sbtab
 % (SBtab excel name)
@@ -34,7 +34,7 @@ stg.sbtab_name = "sbtab_"+stg.name;
 % and can be combined as for example "RS,diag", to not run any analysis set
 % stg.analysis to equal to ""
 % (Analysis)
-stg.analysis = "opt";
+stg.analysis = "diag";
 
 % Experiments to run
 % (Experiments to run)
@@ -109,7 +109,7 @@ stg.simtime = "second";
 % True or false to decide whether to run sbioaccelerate (after changing this value
 % you need to run "clear functions" to see an effect)
 % (sbioaccelerate)
-stg.sbioacc = true;
+stg.sbioacc = false;
 
 % Max step size in the simulation (if empty matlab decides whats best)
 % (Maximum step)
