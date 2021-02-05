@@ -1,4 +1,4 @@
-!!SBtab	Document='D1 LTP time window' TableName='Definitions' TableType='Definition' SBtabVersion='1.0'			
+!!SBtab	SBtabVersion='1.0' Document='D1_LTP_time_window_SBtab' TableName='Definitions' TableTitle='D1_LTP_time_window_SBtab Definitions' TableType = 'Definition'			
 !ComponentName	!ComponentType	!IsPartOf	!Format	!Description
 Comment	Column	Reaction	string	Comment
 ReferenceName	Column	Reaction	string	Reference title, authors, etc. (as free text)

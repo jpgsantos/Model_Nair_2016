@@ -1,4 +1,4 @@
-!!SBtab	Document='D1 LTP time window' TableName='Compound' TableType='Compound' TableTitle='D1 LTP time window Compounds'										
+!!SBtab	SBtabVersion='1.0' Document='D1_LTP_time_window_SBtab' TableName='Compound' TableTitle='D1_LTP_time_window_SBtab Compound' TableType = 'Compound'										
 !ID	!Name	!Unit	!InitialValue	!IsConstant	!Assignement	!Interpolation	!Type	!Location	!IsInput	!Identifiers:UniProt	!Identifiers:kegg_compound
 S0	AC5	nanomole/liter	700	false	false	false	kinetic	Spine	false	P84309	K08045
 S1	AC5_ATP	nanomole/liter	0	false	false	false	kinetic	Spine	false		
