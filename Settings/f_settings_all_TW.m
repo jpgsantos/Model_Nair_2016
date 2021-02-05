@@ -38,9 +38,7 @@ stg.analysis = "diag";
 
 % Experiments to run
 % (Experiments to run)
-% stg.exprun = [1:10];
-% stg.exprun = [1,3,5,7,9,10];
-stg.exprun = 3;
+stg.exprun = [1:10];
 
 % Choice between 0,1,2 and 3 to change either and how to apply log10 to the
 % scores (check documentation)
@@ -71,6 +69,9 @@ stg.placsl = true;
 % True or false to decide whether to save results
 % (Save results)
 stg.save_results = true;
+
+% True or false to decide whether to run detailed simulation for plots
+stg.simdetail = true;
 
 %% Simulation
 
@@ -113,11 +114,15 @@ stg.sbioacc = false;
 
 % Max step size in the simulation (if empty matlab decides whats best)
 % (Maximum step)
-stg.maxstep = 1;
+stg.maxstep = 0.01;
 
 % Max step size in the equilibration (if empty matlab decides whats best)
 % (Maximum step)
 stg.maxstepeq = [];
+
+% Max step size in the detailed plots (if empty matlab decides whats best)
+% (Maximum step)
+stg.maxstepdetail = [1];
 
 %% Model
 
@@ -157,19 +162,19 @@ stg.ub = zeros(1,stg.parnum)+1;
 stg.partest([216:227],1) =  [1:6,1:6];
 %stg.partest([216:227],1) =  [1:12];
 % (Parameter array to test)
-stg.pat = 1:2;
+stg.pat = 1;
 
 % All the parameter arrays, in this case there is only one
 % (Parameter arrays)
-% stg.pa(1,:) = [-6.443697499,-1.638272164,-2.408935393,-5.958607315,-2.26760624,1];
+stg.pa(1,:) = [-6.443697499,-1.638272164,-2.408935393,-5.958607315,-2.26760624,1];
 % stg.pa(2,:) = [-7.06271648505259,-0.911947483777705,0.921584010145175,-5.87732329604158,1.01000000000000,1.01000000000000];
 % stg.pa(3,:) = [-7.20085458817241,-8.01000000000000,1.01000000000000,-6.06793538748130,-7.94246951614422,0.943872863402740];
 % stg.pa(4,:) = [-7.20338699458001,-7.97887371785114,1.01000000000000,-6.03020948484545,-0.229483601794052,0.836382322445649];
 % stg.pa(5,:) = [-6.76251722269612,-4.07563169528588,1.01000000000000,-8.01000000000000,1.01000000000000,-7.72901478233823];
 
 
-stg.pa(2,:) = [-6.73035061178964,-7.04380022646225,0.569005110183267,-6.19877949677366,0.996597348227969,-7.68326809496575];
-stg.pa(1,:) = [-7.01852509901175,-7.75936616075045,0.343274398885203,-7.03109392578718,-7.84762750313721,-4.14926433212899];
+% stg.pa(2,:) = [-6.73035061178964,-7.04380022646225,0.569005110183267,-6.19877949677366,0.996597348227969,-7.68326809496575];
+% stg.pa(1,:) = [-7.01852509901175,-7.75936616075045,0.343274398885203,-7.03109392578718,-7.84762750313721,-4.14926433212899];
 
 % % Example code to test more than one parameter array
 % stg.pat = [1,2];
@@ -177,8 +182,8 @@ stg.pa(1,:) = [-7.01852509901175,-7.75936616075045,0.343274398885203,-7.03109392
 
 % Best parameter array found so far for the model
 % (Best parameter array)
-% stg.bestpa = [-6.443697499,-1.638272164,-2.408935393,-5.958607315,-2.26760624,1];
-stg.bestpa = [-7.20085458817241,-8.01000000000000,1.01000000000000,-6.06793538748130,-7.94246951614422,0.943872863402740];
+stg.bestpa = [-6.443697499,-1.638272164,-2.408935393,-5.958607315,-2.26760624,1];
+% stg.bestpa = [-7.20085458817241,-8.01000000000000,1.01000000000000,-6.06793538748130,-7.94246951614422,0.943872863402740];
 %stg.bestpa = [-6.443697499,-1.638272164,-2.408935393,-5.958607315,-2.26760624,1,-6.443697499,-1.638272164,-2.408935393,-5.958607315,-2.26760624,1];
 
 
@@ -186,7 +191,7 @@ stg.bestpa = [-7.20085458817241,-8.01000000000000,1.01000000000000,-6.0679353874
 % stg.bestpa = [-7.01852509901175,-7.75936616075045,0.343274398885203,-7.03109392578718,-7.84762750313721,-4.14926433212899];
 
 % Bestpa Experiment E2
-stg.bestpa = [-6.98228195008346,-2.82239974076244,0.954773916825491,-7.45258900825495,-7.25760190022186,-4.18225853360734];
+% stg.bestpa = [-6.98228195008346,-2.82239974076244,0.954773916825491,-7.45258900825495,-7.25760190022186,-4.18225853360734];
 
 % Bestpa Experiment E4
 % stg.bestpa = [-6.73035061178964,-7.04380022646225,0.569005110183267,-6.19877949677366,0.996597348227969,-7.68326809496575];
@@ -246,19 +251,24 @@ stg.sasamplesigma = 0.1;
 
 % Parameter(optimization array) that is being worked on in a specific
 % iteration of PL (if -1 no parameter is being worked in PL)
+% (Profile Likelihood Index)
 stg.PLind = -1;
 
 % Which parameters to do PL on, it should be all parameters but can also be
 % a subset for testing purposes
+% (Profile Likelihood parameters to Test)
 stg.pltest = (1:6);
 
 % How many points to do for each parameter in the PL
+% (Profile Likelihood Resolution)
 stg.plres = 900;
 
 % True or false to decide whether to do plots after calculating PL
+% (Profile Likelihood Plots)
 stg.plplot = true;
 
 % True or false to decide whether to run simulated annealing
+% (Profile Likelihood Simulated Annealing)
 stg.plsa = true;
 
 % Options for simulated annealing
@@ -273,6 +283,7 @@ stg.plsao = optimoptions(@simulannealbnd,'Display','off', ...
 %     'MaxMeshSize',2,'MaxFunctionEvaluations',2000);
 
 % True or false to decide whether to run fmincon
+% (Profile Likelihood FMincon)
 stg.plfm = false;
 
 % Options for fmincon
