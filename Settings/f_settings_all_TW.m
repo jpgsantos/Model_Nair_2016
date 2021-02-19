@@ -71,7 +71,7 @@ stg.placsl = true;
 stg.save_results = true;
 
 % True or false to decide whether to run detailed simulation for plots
-stg.simdetail = true;
+stg.simdetail = false;
 
 %% Simulation
 
@@ -162,11 +162,13 @@ stg.ub = zeros(1,stg.parnum)+1;
 stg.partest([216:227],1) =  [1:6,1:6];
 %stg.partest([216:227],1) =  [1:12];
 % (Parameter array to test)
-stg.pat = 1;
+stg.pat = [1:2];
 
 % All the parameter arrays, in this case there is only one
 % (Parameter arrays)
 stg.pa(1,:) = [-6.443697499,-1.638272164,-2.408935393,-5.958607315,-2.26760624,1];
+stg.pa(2,:) =[-7.19471042393448,-7.17224598281674,0.132929623720600,-6.07212312980046,-3.79938051307538,1];
+
 % stg.pa(2,:) = [-7.06271648505259,-0.911947483777705,0.921584010145175,-5.87732329604158,1.01000000000000,1.01000000000000];
 % stg.pa(3,:) = [-7.20085458817241,-8.01000000000000,1.01000000000000,-6.06793538748130,-7.94246951614422,0.943872863402740];
 % stg.pa(4,:) = [-7.20338699458001,-7.97887371785114,1.01000000000000,-6.03020948484545,-0.229483601794052,0.836382322445649];
@@ -183,6 +185,10 @@ stg.pa(1,:) = [-6.443697499,-1.638272164,-2.408935393,-5.958607315,-2.26760624,1
 % Best parameter array found so far for the model
 % (Best parameter array)
 stg.bestpa = [-6.443697499,-1.638272164,-2.408935393,-5.958607315,-2.26760624,1];
+
+
+
+
 % stg.bestpa = [-7.20085458817241,-8.01000000000000,1.01000000000000,-6.06793538748130,-7.94246951614422,0.943872863402740];
 %stg.bestpa = [-6.443697499,-1.638272164,-2.408935393,-5.958607315,-2.26760624,1,-6.443697499,-1.638272164,-2.408935393,-5.958607315,-2.26760624,1];
 
@@ -298,11 +304,11 @@ stg.plfmo = optimoptions('fmincon','Display','off',...
 %  Time for the optimization in seconds (fmincon does not respect this
 % time!!)
 % (Optimization time)
-stg.optt = 60*30;
+stg.optt = 60*5;
 
 % Population size for the algorithms that use populations
 % (Population size)
-stg.popsize = 720;
+stg.popsize = 72;
 
 % optimization start method, choose between:
 % 1 Random starting point or group of starting points inside the bounds
