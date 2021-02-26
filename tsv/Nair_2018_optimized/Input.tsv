@@ -1,0 +1,4 @@
+!!SBtab	SBtabVersion='1.0' Document='Nair_2016_optimized' TableName='Input' TableTitle='Nair_2016_optimized Input' TableType = 'Quantity'		
+!ID	!Name	!DefaultValue	!Unit
+INP0	DA_start	100	millisecond
+INP1	DA_max	1480	nanomole/liter

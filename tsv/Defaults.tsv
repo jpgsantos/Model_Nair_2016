@@ -1,7 +1,0 @@
-!!SBtab	TableName='Defaults' TableType='Quantity' TableTitle='Default units for this model' SBtabVersion='1.0' Document='SBTAB_Findsim'	
-!ID	!Name	!Unit
-time	time	second
-volume	volume	liter
-substance	substance	nanomol
-length	length	um
-area	area	um2

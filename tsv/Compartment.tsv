@@ -1,3 +1,0 @@
-!!SBtab	SBtabVersion='1.0' Document='D1_LTP_time_window_SBtab' TableName='Compartment' TableTitle='D1_LTP_time_window_SBtab Compartment' TableType = 'Quantity'		
-!ID	!Name	!Size	!Unit
-V1	Spine	1e-15	liter
