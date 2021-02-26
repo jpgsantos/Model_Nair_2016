@@ -2,8 +2,7 @@
 **/Data/*.sbproj
 *.sbproj
 **/Results/*
-!**/Results/Analysis_GSA_example/
-!**/Results/Analysis_diagnostics_example/
+!**/Results/Examples/
 **/Formulas/*.m
 **/Data/Exp/*.mat
 *.xml
