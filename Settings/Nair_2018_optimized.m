@@ -70,7 +70,7 @@ stg.simdetail = false;
 
 % Maximum time for each individual function to run in seconds
 % (Maximum time)
-stg.maxt = 10;
+stg.maxt = 2;
 
 % Equilibration time
 % (Equilibration time)
@@ -107,7 +107,7 @@ stg.sbioacc = true;
 
 % Max step size in the simulation (if empty matlab decides whats best)
 % (Maximum step)
-stg.maxstep = 0.01;
+stg.maxstep = [];
 
 % Max step size in the equilibration (if empty matlab decides whats best)
 % (Maximum step)
@@ -145,7 +145,9 @@ stg.pat = [1:1];
 
 % All the parameter arrays, in this case there is only one
 % (Parameter arrays)
+
 stg.pa(1,:) = [-6.443697499,-1.638272164,-2.408935393,-5.958607315,-2.26760624,1];
+
 
 % Best parameter array found so far for the model
 % (Best parameter array)
