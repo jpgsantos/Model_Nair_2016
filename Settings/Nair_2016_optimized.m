@@ -1,4 +1,4 @@
-function [stg] = Nair_2018_optimized()
+function [stg] = Nair_2016_optimized()
 % stg means (settings)
 
 %% Import
@@ -7,17 +7,13 @@ function [stg] = Nair_2018_optimized()
 % (Import)
 stg.import = true;
 
-% Name of the folder where everything related to the model is stored
-% (Folder Model)
-stg.folder_model = "Nair_2018";
-
 % Name of the excel file with the sbtab
 % (SBtab excel name)
-stg.sbtab_excel_name = "SBtab_Nair_2018_optimized.xlsx";
+stg.sbtab_excel_name = "SBtab_Nair_2016_optimized.xlsx";
 
 % Name of the model
 % (Name)
-stg.name = "Nair_2018_optimized";
+stg.name = "Nair_2016_optimized";
 
 % Name of the default model compartment
 % (Compartment name)
@@ -25,7 +21,7 @@ stg.cname = "Spine";
 
 % Name of the sbtab saved in .mat format
 % (SBtab name)
-stg.sbtab_name = "sbtab_"+stg.name;
+stg.sbtab_name = "SBtab_"+stg.name;
 
 %% Analysis
 
