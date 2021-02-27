@@ -6,3 +6,7 @@
 **/Formulas/*.m
 **/Data/Exp/*.mat
 *.xml
+*.m
+*.tsv
+!**/tsv/
+!**/Settings/*.m
