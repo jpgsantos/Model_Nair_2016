@@ -2,11 +2,11 @@
 **/Data/*.sbproj
 *.sbproj
 **/Results/*
-!**/Results/Examples/
+!**/Results/Examples/**
 **/Formulas/*.m
 **/Data/Exp/*.mat
 *.xml
 *.m
 *.tsv
-!**/tsv/
+!**/tsv/**
 !**/Settings/*.m
