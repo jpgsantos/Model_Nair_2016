@@ -82,7 +82,7 @@ stg.UnitConversion = true;
 
 % True or false to decide whether to do Absolute Tolerance Scaling
 % (Absolute Tolerance Scaling)
-stg.abstolscale = false;
+stg.abstolscale = true;
 
 % Value of Relative tolerance
 % (Relative tolerance)
@@ -90,7 +90,9 @@ stg.reltol = 1.0E-4;
 
 % Value of Absolute tolerance
 % (Absolute tolerance)
-stg.abstol = 1.0E-4;
+stg.abstol = 1.0E-7;%% This value is low due to the size of the 
+% compartment, use a compartment of 1 liter and increadse this to 1.0E-4
+% to improve run speed
 
 % Time units for simulation
 % (Simulation time)
@@ -99,11 +101,11 @@ stg.simtime = "second";
 % True or false to decide whether to run sbioaccelerate (after changing this value
 % you need to run "clear functions" to see an effect)
 % (sbioaccelerate)
-stg.sbioacc = true;
+stg.sbioacc = false;
 
 % Max step size in the simulation (if empty matlab decides whats best)
 % (Maximum step)
-stg.maxstep = [];
+stg.maxstep = [1];
 
 % Max step size in the equilibration (if empty matlab decides whats best)
 % (Maximum step)
