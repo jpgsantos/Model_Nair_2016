@@ -25,9 +25,11 @@ Reactions in PSD:
 * pCaMKII_CaM_Ca4_psd + CaMKII_CaM_Ca4_psd <=> pCaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd
 * pCaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd -> pCaMKII_CaM_Ca4_psd + pCaMKII_CaM_Ca4_psd
 
-# Tools to run the model
+# Tools for building and analyzing the model
 
-The scripts that reproduce figures in the Subcellular Workflow repository https://github.com/jpgsantos/Subcellular_workflow
+We have developed some custom tools for model development and analysis. These tools and a fuller explanation of their capabilities can be found in this repository:
+ 
+ https://github.com/jpgsantos/Subcellular_workflow 
 
 # References
 
