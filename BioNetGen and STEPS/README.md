@@ -6,7 +6,7 @@
  
 - Run ***convert_Nair_2016_from_SBML_to_BNGL.ipynb*** [jupyter notebook](https://jupyter.org/) to translate from SBML to BioNetGen language
  
-- Import the resulted BioNetGen model (***Nair_2016_optimized_alternative.bngl***) to the **[subcellular web app](https://subcellular.humanbrainproject.eu/ )**. Add spine geometry ( ***.json***, ***.node***, ***.ele***, ***.face*** files) and stimulation pattern (***stim_DA_complex.tsv***). See the **[subcellular web app help](https://humanbrainproject.github.io/hbp-sp6-guidebook/online_usecases/subcellular_level/subcellular_app/subcellular_app.html)** for details
+- Import the resulted BioNetGen model ***Nair_2016_optimized_alternative.bngl*** to the **[subcellular web app](https://subcellular.humanbrainproject.eu/ )**. Add spine geometry  ***.json***, ***.node***, ***.ele***, ***.face*** files and stimulation pattern ***stim_DA_complex.tsv***. See the **[subcellular web app help](https://humanbrainproject.github.io/hbp-sp6-guidebook/online_usecases/subcellular_level/subcellular_app/subcellular_app.html)** for details
  
 - Simulate final model (***Nair_2016_optimized_alternative.ebngl***) in the [subcellular web app](https://subcellular.humanbrainproject.eu/ ) using **STEPS** or **NFsim** solvers
 
