@@ -20,21 +20,28 @@
 ***Nair_2016_optimized_alternative.ebngl*** - extended BNGL model corresponding to the ***[optimized Nair 2016](https://github.com/jpgsantos/Model_Nair_2016/blob/master/SBtab_Nair_2016_optimized.xlsx)*** SBtab model with added geometry and stimulation patterns. Can be imported and simulated in the **[subcellular web app](https://subcellular.humanbrainproject.eu/ )**
 
 
+
 ***SBTAB_Nair_2016*** - the folder with the ***[optimized Nair 2016](https://github.com/jpgsantos/Model_Nair_2016/tree/master/tsv/Nair_2016_optimized)*** SBtab model tsv tables. 
+
 
 ***Nair_2016_optimized.xml*** - SBML model translated from the ***[optimized Nair 2016](https://github.com/jpgsantos/Model_Nair_2016/tree/master/tsv/Nair_2016_optimized)*** model by ***convert_Nair_2016_from_SBTAB_to_SBML.R*** script based on [SBtab to SBML converter](https://github.com/a-kramer/SBtabVFGEN)
 
 
 ***Nair_2016_optimized_alternative.bngl*** - BioNetGen model obtained from ***Nair_2016_optimized.xml*** by ***convert_Nair_2016_from_SBML_to_BNGL.ipynb*** [jupyter notebook](https://jupyter.org/) which is based on ***sbml_to_bngl.py*** conversion tool 
 
+
 ***spine.ele***, ***spine.face***, ***spine.node***, ***spine.json*** - these files specify [TetGen](http://wias-berlin.de/software/index.jsp?id=TetGen&lang=1) meshes and model geometry needed for the [subcellular web app](https://subcellular-bsp-epfl.apps.hbp.eu/model/meta/) *[Geometry](https://subcellular-bsp-epfl.apps.hbp.eu/model/geometry)* section and STEPS solver (see the **[subcellular web app help](https://humanbrainproject.github.io/hbp-sp6-guidebook/online_usecases/subcellular_level/subcellular_app/subcellular_app.html)** for details)
+
 
 
 ***stim_DA_complex.tsv***, ***stim_noDA_complex.tsv*** - these files specify the stimulation pattern in *[Simulations](https://subcellular-bsp-epfl.apps.hbp.eu/model/simulations)* section of the [subcellular web app](https://subcellular-bsp-epfl.apps.hbp.eu/model/meta/) (corresponds to the experiments [E0](https://github.com/jpgsantos/Model_Nair_2016/blob/master/tsv/Nair_2016_optimized/E0I.tsv) - [E9](https://github.com/jpgsantos/Model_Nair_2016/blob/master/tsv/Nair_2016_optimized/E9.tsv) of the SBtab model).
 
+
 ***SBtabVFGEN-master*** - the folder containing a copy of [SBtab to SBML converter](https://github.com/a-kramer/SBtabVFGEN)
 
+
 ***sbml_to_bngl.py*** - the python tool for conversion of SBML models to BioNetGen language.
+
 
 
 ### Conversion from SBML to BioNetGen language
