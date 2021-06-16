@@ -1,14 +1,19 @@
 #  BioNetGen translation of SBtab [Nair_2016](https://github.com/jpgsantos/Model_Nair_2016) model 
 ### The model was translated from [SBtab](https://github.com/tlubitz/SBtab) model format to rule-based [BioNetGen language](http://bionetgen.org/) for the simulation with [STEPS](http://steps.sourceforge.net/STEPS/default.php) and [NFsim](http://michaelsneddon.net/nfsim/) solvers embedded in the [subcellular web app](https://subcellular.humanbrainproject.eu/ ) and with the [RuleBender](https://github.com/RuleWorld/rulebender)
 #
+
 ### Conversion steps 
 - Run ***convert_Nair_2016_from_SBTAB_to_SBML.R*** in [RStudio](https://www.rstudio.com/products/rstudio/download/) to translate SBtab model to SBML. This step depends on [SBtab to SBML converter](https://github.com/a-kramer/SBtabVFGEN)
+
  
 - Run ***convert_Nair_2016_from_SBML_to_BNGL.ipynb*** [jupyter notebook](https://jupyter.org/) to translate from SBML to BioNetGen language
- 
+
+
 - Import the resulted BioNetGen model ***Nair_2016_optimized_alternative.bngl*** to the **[subcellular web app](https://subcellular.humanbrainproject.eu/ )**. Add spine geometry  ***.json***, ***.node***, ***.ele***, ***.face*** files and stimulation pattern ***stim_DA_complex.tsv***. See the **[subcellular web app help](https://humanbrainproject.github.io/hbp-sp6-guidebook/online_usecases/subcellular_level/subcellular_app/subcellular_app.html)** for details
- 
+
+
 - Simulate final model (***Nair_2016_optimized_alternative.ebngl***) in the [subcellular web app](https://subcellular.humanbrainproject.eu/ ) using **STEPS** or **NFsim** solvers
+
 
 ### Files and folders
 
@@ -30,6 +35,7 @@
 ***SBtabVFGEN-master*** - the folder containing a copy of [SBtab to SBML converter](https://github.com/a-kramer/SBtabVFGEN)
 
 ***sbml_to_bngl.py*** - the python tool for conversion of SBML models to BioNetGen language.
+
 
 ### Conversion from SBML to BioNetGen language
 
