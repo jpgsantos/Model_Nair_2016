@@ -48,7 +48,7 @@
 
 The conversion is implemented in ***sbml_to_bngl.py*** python module.
 Two approaches are supported by *sbml_to_bngl.transform()* function:
-- if *converter='pysb'* - the convertor based on the [Atomizer](https://ruleworld.github.io/atomizer/blog/basic/bng.html) implemented by pysb.importers.sbml.sbml_translator() function will be used. The [Atomizer](https://ruleworld.github.io/atomizer/blog/basic/bng.html) will try to modify the set of model molecules and reactions to convert them from reaction network to rule-based BioNetGen format. 
+- if *converter='pysb'* - the convertor based on the [Atomizer](https://ruleworld.github.io/atomizer/blog/basic/bng.html) implemented in [PySB](http://pysb.org/) pysb.importers.sbml.sbml_translator() function will be used. The [Atomizer](https://ruleworld.github.io/atomizer/blog/basic/bng.html) will try to modify the set of model molecules and reactions to convert them from reaction network to rule-based BioNetGen format. 
 - *if converter='plain'* - a libsbml based convertor for sbml level 2, version 4 will be used. This converter produces a bngl approximation to reaction network format of a model. It is assumed that sbml models were obtained by importing a MATLAB simbiology model to sbml, or from SBTAB model by [SBtab to SBML converter](https://github.com/a-kramer/SBtabVFGEN).
 
 Models expressed by SBML and SBTAB often are not fully competible with BNGL.
