@@ -2,13 +2,14 @@
 #install.packages("pracma")
 #install.packages("hdf5r")
 
-PATH_LIB = "/Applications/anaconda2/lib/R/library" ### PATH TO libSBML
+PATH_LIB = "/Applications/anaconda2/lib/R/library" ### PATH TO libSBML and other packages
 library("libSBML", lib.loc=PATH_LIB) 
 library("pracma", lib.loc=PATH_LIB)  
 library("hdf5r", lib.loc=PATH_LIB)   
 
 d0 = getwd()
-d1 = paste(d0,"/SBtabVFGEN-master",sep = '')  ### PATH TO SBTAB -> SBML CONVERSION TOOL 
+PATH_SBtabVFGEN = "/SBtabVFGEN-master" ### SET PATH TO SBTAB->SBML CONVERSION TOOL HERE (the folder should contain sbtab_to_vfgen.R and sbtab_from_tsv.R , See https://github.com/a-kramer/SBtabVFGEN ) 
+d1 = paste(d0,PATH_SBtabVFGEN,sep = '')  ### 
 setwd(d1)
 source("sbtab_to_vfgen.R")
 
