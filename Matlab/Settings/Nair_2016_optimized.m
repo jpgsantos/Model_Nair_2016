@@ -172,7 +172,7 @@ stg.plotoln = true;
 
 % Number of samples to use in SA
 % (Sensitivity analysis number of samples)
-stg.sansamples = 1000;
+stg.sansamples = 360;
 
 % True or false to decide whether to subtract the mean before calculating SI and
 % SIT
@@ -195,6 +195,8 @@ stg.sasamplemode = 2;
 % sensitivity analysis
 % (Sensitivity analysis sampling sigma)
 stg.sasamplesigma = 0.1;
+
+stg.gsabootstrapsize = ceil(sqrt(stg.sansamples));
 
 %% Profile Likelihood
 
