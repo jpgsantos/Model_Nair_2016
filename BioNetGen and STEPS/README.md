@@ -58,7 +58,7 @@ if *adapt_steps* argument dictionary *'list_of_steps'* is nonempty.
 
 The adaptation steps include:
 
-1) The STEPS and NFsim solvers require different units for species quantities an kinetic rates. An adapted BNGL model provides modifed expressions for all species concentrations and kinetic rates and provides an easy way for units changing by specification of auxilary bngl model parameters: *Na* and *V_comparment_name*. These parameters should be selected to: *Na=6.022e23* and *V_comparment_name* = volume of corresponding compartment in liters for NFsim and to: *Na=1* and *V_comparment_name=1* for STEPS. 
+1) The STEPS and NFsim solvers require different units for species quantities and kinetic rates. An adapted BNGL model provides modifed expressions for all species concentrations and kinetic rates and provides a way for units changing by specification of auxilary bngl model parameters: *Na* and *V_comparment_name*. These parameters should be selected to: *Na=6.022e23* and *V_comparment_name* = volume of corresponding compartment in liters for NFsim and to: *Na=1* and *V_comparment_name=1* for STEPS. 
 
 2) Species with fixed concentrations are not supported by NFsim solver. The BNGL model adaptation will modify model reactions such that a fixed species concentration became a model parameter. This parameter can be used for the clamping of species concentration or for the stimulation pattern application
 
