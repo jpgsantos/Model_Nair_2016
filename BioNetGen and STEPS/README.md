@@ -48,8 +48,8 @@
 
 The conversion is implemented in ***sbml_to_bngl.py*** python module.
 Two approaches are supported by *sbml_to_bngl.transform()* function:
-- if *converter='pysb'* - the convertor based on the [Atomizer](https://ruleworld.github.io/atomizer/blog/basic/bng.html) implemented in the [PySB](http://pysb.org/) pysb.importers.sbml.sbml_translator() function will be used. The [Atomizer](https://ruleworld.github.io/atomizer/blog/basic/bng.html) will try to modify the set of model molecules and reactions to convert them from reaction network to rule-based BioNetGen format. 
-- *if converter='plain'* - a libsbml based convertor for sbml level 2, version 4 will be used. This converter produces a bngl approximation to reaction network format of a model. It is assumed that sbml models were obtained by importing a MATLAB simbiology model to sbml, or from SBTAB model by [SBtab to SBML converter](https://github.com/a-kramer/SBtabVFGEN).
+- if *converter='pysb'* - the converter based on the [Atomizer](https://ruleworld.github.io/atomizer/blog/basic/bng.html) implemented in the [PySB](http://pysb.org/) pysb.importers.sbml.sbml_translator() function will be used. The [Atomizer](https://ruleworld.github.io/atomizer/blog/basic/bng.html) will try to modify the set of model molecules and reactions to convert them from reaction network to rule-based BioNetGen format. 
+- *if converter='plain'* - a libsbml based converter for sbml level 2, version 4 will be used. This converter produces a bngl approximation to reaction network format of a model. It is assumed that sbml models were obtained by importing a MATLAB simbiology model to sbml, or from SBTAB model by [SBtab to SBML converter](https://github.com/a-kramer/SBtabVFGEN).
 
 Models expressed by SBML and SBTAB often are not fully competible with BNGL.
 Additional model adaptation steps are required in this case to obtain a working BNGL model. 
@@ -62,7 +62,7 @@ The adaptation steps include:
 
 2) Species with fixed concentrations are not supported by NFsim solver. The BNGL model adaptation will modify model reactions such that a fixed species concentration became a model parameter. This parameter can be used for the clamping of species concentration or for the stimulation pattern application
 
-3) If SBML to BNGL convertor implemented in Atomizer is selected then additional transformation steps include renaming of duplicated molecule sites and reparing incorrect molecule names and kinetic rate transformations
+3) If SBML to BNGL converter implemented in Atomizer is selected then additional transformation steps include renaming of duplicated molecule sites and reparing incorrect molecule names and kinetic rate transformations
 
 4) In case when MATLAB simbiology is used for SBML model creation, adapt_steps will repare incorrect molecule and parameter names
 
