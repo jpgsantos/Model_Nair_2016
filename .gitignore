@@ -1,12 +1,7 @@
-**/Data/*.mat
-**/Data/*.sbproj
-*.sbproj
-**/Results/*
-!**/Results/Examples/**
-**/Formulas/*.m
-**/Data/Exp/*.mat
-*.xml
-*.m
-*.tsv
-!**/tsv/**
-!**/Settings/*.m
+Matlab/Data/
+Matlab/Input_functions/
+Matlab/Results/Diagnostics/
+Matlab/Results/Sensitivity Analysis/
+Matlab/Results/Optimization/
+Matlab/Settings/**
+!Matlab/Settings/Nair_2016_optimized.m

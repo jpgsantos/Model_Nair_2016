@@ -1,0 +1,710 @@
+begin model
+begin parameters
+Na 1.0 # set Na to 6.022e23 for NFsim, or to 1.0 for STEPS
+v_Spine 1.0 # set to 1.0 for STEPS or to volume in liters for NFsim
+Na_x_v_Spine Na*v_Spine
+k2k_m12_1xSpine_1xSpine_ 1/1e-12*1/(Na_x_v_Spine) # transformation of kinetic rates units, final units should be descendants of mole/liter, second for STEPS and number of molecules, second for NFsim, CHECK IT
+k2k_m21_1xSpine_2xSpine_ 1/1e-21*1/(Na_x_v_Spine)*1/(Na_x_v_Spine) # transformation of kinetic rates units, final units should be descendants of mole/liter, second for STEPS and number of molecules, second for NFsim, CHECK IT
+k2k_m3_1xSpine_ 1/1e-3 # transformation of kinetic rates units, final units should be descendants of mole/liter, second for STEPS and number of molecules, second for NFsim, CHECK IT
+c2c_0_Spine 1e0*(Na_x_v_Spine) # transformation of concentration units,final units should be descendants of mole/liter for STEPS and number of molecules for NFsim, CHECK IT
+c2c_m9_Spine 1e-9*(Na_x_v_Spine) # transformation of concentration units,final units should be descendants of mole/liter for STEPS and number of molecules for NFsim, CHECK IT
+tau_DA1 34.979    # tau_DA1
+tau_DA2 420.0    # tau_DA2
+DA_basal 20.0    # DA_basal
+Ca_basal 60.0    # Ca_basal
+kf_R0   0.0299985318119079*k2k_m3_1xSpine_# kf_R0
+kf_R1   0.0150003019045595*k2k_m3_1xSpine_# kf_R1
+kf_R2   5.00034534976978e-05*k2k_m12_1xSpine_1xSpine_# kf_R2
+kr_R2   0.249999995007974*k2k_m3_1xSpine_# kr_R2
+kf_R3   5.00034534976978e-05*k2k_m12_1xSpine_1xSpine_# kf_R3
+kr_R3   0.249999995007974*k2k_m3_1xSpine_# kr_R3
+kf_R4   0.01*k2k_m12_1xSpine_1xSpine_# kf_R4
+kr_R4   0.001*k2k_m3_1xSpine_# kr_R4
+kf_R5   6.00067353864116e-06*k2k_m12_1xSpine_1xSpine_# kf_R5
+kr_R5   0.0199986186963274*k2k_m3_1xSpine_# kr_R5
+kf_R6   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R6
+kr_R6   2.99999133271615*k2k_m3_1xSpine_# kr_R6
+kf_R7   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R7
+kr_R7   2.99985318119079e-06*k2k_m3_1xSpine_# kr_R7
+kf_R8   1e-05*k2k_m12_1xSpine_1xSpine_# kf_R8
+kr_R8   0.20000000199681*k2k_m3_1xSpine_# kr_R8
+kf_R9   0.01*k2k_m3_1xSpine_# kf_R9
+kf_R10   1e-06*k2k_m12_1xSpine_1xSpine_# kf_R10
+kr_R10   0.000299985318119079*k2k_m3_1xSpine_# kr_R10
+kf_R11   0.000199986186963274*k2k_m3_1xSpine_# kf_R11
+kf_R12   0.001*k2k_m12_1xSpine_1xSpine_# kf_R12
+kr_R12   0.00150003019045595*k2k_m3_1xSpine_# kr_R12
+kf_R13   1e-06*k2k_m12_1xSpine_1xSpine_# kf_R13
+kr_R13   0.1*k2k_m3_1xSpine_# kr_R13
+kf_R14   0.01*k2k_m3_1xSpine_# kf_R14
+kf_R15   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R15
+kr_R15   0.1*k2k_m3_1xSpine_# kr_R15
+kf_R16   1e-05*k2k_m12_1xSpine_1xSpine_# kf_R16
+kr_R16   0.01*k2k_m3_1xSpine_# kr_R16
+kf_R17   1.50003019045595e-05*k2k_m12_1xSpine_1xSpine_# kf_R17
+kr_R17   0.1*k2k_m3_1xSpine_# kr_R17
+kf_R18   8.00018444855099e-06*k2k_m12_1xSpine_1xSpine_# kf_R18
+kr_R18   0.1*k2k_m3_1xSpine_# kr_R18
+kf_R19   1.50003019045595e-05*k2k_m12_1xSpine_1xSpine_# kf_R19
+kr_R19   0.1*k2k_m3_1xSpine_# kr_R19
+kf_R20   0.00800018444855099*k2k_m3_1xSpine_# kf_R20
+kf_R21   0.00150003019045595*k2k_m3_1xSpine_# kf_R21
+kf_R22   0.00800018444855099*k2k_m3_1xSpine_# kf_R22
+kf_R23   0.0012998702373886*k2k_m12_1xSpine_1xSpine_# kf_R23
+kr_R23   0.0001*k2k_m3_1xSpine_# kr_R23
+kf_R24   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R24
+kr_R24   1.0*k2k_m3_1xSpine_# kr_R24
+kf_R25   6.00067353864116e-06*k2k_m12_1xSpine_1xSpine_# kf_R25
+kr_R25   1.99986186963274e-07*k2k_m3_1xSpine_# kr_R25
+kf_R26   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R26
+kr_R26   0.1*k2k_m3_1xSpine_# kr_R26
+kf_R27   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R27
+kr_R27   2.99985318119079e-05*k2k_m3_1xSpine_# kr_R27
+kf_R28   1e-06*k2k_m12_1xSpine_1xSpine_# kf_R28
+kr_R28   0.01*k2k_m3_1xSpine_# kr_R28
+kf_R29   0.01*k2k_m12_1xSpine_1xSpine_# kf_R29
+kr_R29   0.001*k2k_m3_1xSpine_# kr_R29
+kf_R30   8.00018444855099e-06*k2k_m12_1xSpine_1xSpine_# kf_R30
+kr_R30   0.1*k2k_m3_1xSpine_# kr_R30
+kf_R31   0.00150003019045595*k2k_m3_1xSpine_# kf_R31
+kf_R32   0.00299985318119079*k2k_m3_1xSpine_# kf_R32
+kf_R33   0.00299985318119079*k2k_m3_1xSpine_# kf_R33
+kf_R34   5.00034534976978e-07*k2k_m12_1xSpine_1xSpine_# kf_R34
+kr_R34   0.001*k2k_m3_1xSpine_# kr_R34
+kf_R35   5.00034534976978e-07*k2k_m12_1xSpine_1xSpine_# kf_R35
+kr_R35   0.001*k2k_m3_1xSpine_# kr_R35
+kf_R36   0.00120005182020427*k2k_m3_1xSpine_# kf_R36
+kf_R37   8.00018444855099e-06*k2k_m3_1xSpine_# kf_R37
+kf_R38   2.60015956316527e-05*k2k_m12_1xSpine_1xSpine_# kf_R38
+kr_R38   0.350001576071014*k2k_m3_1xSpine_# kr_R38
+kf_R39   3.46019042482949e-05*k2k_m12_1xSpine_1xSpine_# kf_R39
+kr_R39   0.0500034534976979*k2k_m3_1xSpine_# kr_R39
+kf_R40   0.0500034534976979*k2k_m3_1xSpine_# kf_R40
+kr_R40   2.99985318119079e-05*k2k_m12_1xSpine_1xSpine_# kr_R40
+kf_R41   2.99985318119079e-05*k2k_m12_1xSpine_1xSpine_# kf_R41
+kr_R41   0.001*k2k_m3_1xSpine_# kr_R41
+kf_R42   0.00249976970217851*k2k_m3_1xSpine_# kf_R42
+kf_R43   1e-09*k2k_m21_1xSpine_2xSpine_# kf_R43
+kr_R43   0.001*k2k_m3_1xSpine_# kr_R43
+kf_R44   0.00299985318119079*k2k_m3_1xSpine_# kf_R44
+kf_R45   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R45
+kr_R45   0.00199986186963274*k2k_m3_1xSpine_# kr_R45
+kf_R46   0.01*k2k_m3_1xSpine_# kf_R46
+kf_R47   0.1*k2k_m12_1xSpine_1xSpine_# kf_R47
+kf_R48   2.54976408779928e-06*k2k_m12_1xSpine_1xSpine_# kf_R48
+kr_R48   0.001*k2k_m3_1xSpine_# kr_R48
+kf_R49   1e-07*k2k_m12_1xSpine_1xSpine_# kf_R49
+kr_R49   0.001*k2k_m3_1xSpine_# kr_R49
+kf_R50   7.50066898736068e-08*k2k_m12_1xSpine_1xSpine_# kf_R50
+kr_R50   0.001*k2k_m3_1xSpine_# kr_R50
+kf_R51   1.2998702373886e-06*k2k_m12_1xSpine_1xSpine_# kf_R51
+kr_R51   0.001*k2k_m3_1xSpine_# kr_R51
+kf_R52   0.01*k2k_m12_1xSpine_1xSpine_# kf_R52
+kr_R52   0.001*k2k_m3_1xSpine_# kr_R52
+kf_R53   0.01*k2k_m12_1xSpine_1xSpine_# kf_R53
+kr_R53   0.001*k2k_m3_1xSpine_# kr_R53
+kf_R54   1e-06*k2k_m12_1xSpine_1xSpine_# kf_R54
+kr_R54   0.01*k2k_m3_1xSpine_# kr_R54
+kf_R55   0.0500034534976979*k2k_m3_1xSpine_# kf_R55
+kf_R56   0.00254976408779928*k2k_m12_1xSpine_1xSpine_# kf_R56
+kf_R57   0.001*k2k_m3_1xSpine_# kf_R57
+kf_R58   1.99986186963274e-06*k2k_m12_1xSpine_1xSpine_# kf_R58
+kf_R59   0.000500034534976978*k2k_m3_1xSpine_# kf_R59
+kf_R60   7.50066898736068e-07*k2k_m12_1xSpine_1xSpine_# kf_R60
+kf_R61   0.0249976970217851*k2k_m3_1xSpine_# kf_R61
+kf_R62   0.000649980009683025*k2k_m12_1xSpine_1xSpine_# kf_R62
+kf_R63   0.001*k2k_m3_1xSpine_# kf_R63
+kf_R64   0.001*k2k_m3_1xSpine_# kf_R64
+kf_R65   0.001*k2k_m3_1xSpine_# kf_R65
+kf_R66   0.001*k2k_m3_1xSpine_# kf_R66
+kf_R67   6.00067353864116e-05*k2k_m12_1xSpine_1xSpine_# kf_R67
+kr_R67   0.249999995007974*k2k_m3_1xSpine_# kr_R67
+kf_R68   6.00067353864116e-05*k2k_m12_1xSpine_1xSpine_# kf_R68
+kr_R68   0.249999995007974*k2k_m3_1xSpine_# kr_R68
+kf_R69   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R69
+kr_R69   0.00199986186963274*k2k_m3_1xSpine_# kr_R69
+kf_R70   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R70
+kr_R70   0.0400036851046125*k2k_m3_1xSpine_# kr_R70
+kf_R71   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R71
+kr_R71   0.400000007987242*k2k_m3_1xSpine_# kr_R71
+kf_R72   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R72
+kr_R72   4.00000007987242*k2k_m3_1xSpine_# kr_R72
+kf_R73   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R73
+kr_R73   0.1*k2k_m3_1xSpine_# kr_R73
+kf_R74   6.00067353864116e-06*k2k_m12_1xSpine_1xSpine_# kf_R74
+kr_R74   0.00199986186963274*k2k_m3_1xSpine_# kr_R74
+kf_R75   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R75
+kr_R75   0.01*k2k_m3_1xSpine_# kr_R75
+kf_R76   6.00067353864116e-06*k2k_m12_1xSpine_1xSpine_# kf_R76
+kr_R76   0.00199986186963274*k2k_m3_1xSpine_# kr_R76
+kf_R77   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R77
+kr_R77   0.000400036851046125*k2k_m3_1xSpine_# kr_R77
+kf_R78   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R78
+kr_R78   0.0400036851046125*k2k_m3_1xSpine_# kr_R78
+kf_R79   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R79
+kr_R79   0.400000007987242*k2k_m3_1xSpine_# kr_R79
+kf_R80   4.49987033872151e-05*k2k_m12_1xSpine_1xSpine_# kf_R80
+kr_R80   0.20000000199681*k2k_m3_1xSpine_# kr_R80
+kf_R81   0.01*k2k_m3_1xSpine_# kf_R81
+kf_R82   0.000500034534976978*k2k_m12_1xSpine_1xSpine_# kf_R82
+kr_R82   0.01*k2k_m3_1xSpine_# kr_R82
+kf_R83   0.01*k2k_m3_1xSpine_# kf_R83
+kf_R84   7.00003159130898e-06*k2k_m12_1xSpine_1xSpine_# kf_R84
+kr_R84   0.1*k2k_m3_1xSpine_# kr_R84
+kf_R85   0.001*k2k_m3_1xSpine_# kf_R85
+kf_R86   4.00036851046125e-06*k2k_m12_1xSpine_1xSpine_# kf_R86
+kr_R86   0.1*k2k_m3_1xSpine_# kr_R86
+kf_R87   0.01*k2k_m3_1xSpine_# kf_R87
+kf_R88   7.00003159130898e-06*k2k_m12_1xSpine_1xSpine_# kf_R88
+kr_R88   0.1*k2k_m3_1xSpine_# kr_R88
+kf_R89   0.001*k2k_m3_1xSpine_# kf_R89
+kf_R90   4.00036851046125e-06*k2k_m12_1xSpine_1xSpine_# kf_R90
+kr_R90   0.1*k2k_m3_1xSpine_# kr_R90
+kf_R91   5.00034534976978e-07*k2k_m12_1xSpine_1xSpine_# kf_R91
+kr_R91   0.001*k2k_m3_1xSpine_# kr_R91
+kf_R92   0.01*k2k_m3_1xSpine_# kf_R92
+kf_R93   5.00034534976978e-07*k2k_m12_1xSpine_1xSpine_# kf_R93
+kr_R93   0.01*k2k_m3_1xSpine_# kr_R93
+kf_R94   0.01*k2k_m3_1xSpine_# kf_R94
+kf_R95   0.0001*k2k_m3_1xSpine_# kf_R95
+kf_R96   5.00034534976978e-07*k2k_m12_1xSpine_1xSpine_# kf_R96
+kr_R96   0.01*k2k_m3_1xSpine_# kr_R96
+kf_R97   0.01*k2k_m3_1xSpine_# kf_R97
+kf_R98   5.00034534976978e-07*k2k_m12_1xSpine_1xSpine_# kf_R98
+kr_R98   0.01*k2k_m3_1xSpine_# kr_R98
+kf_R99   0.01*k2k_m3_1xSpine_# kf_R99
+kf_R100   5.00034534976978e-07*k2k_m12_1xSpine_1xSpine_# kf_R100
+kr_R100   0.01*k2k_m3_1xSpine_# kr_R100
+kf_R101   0.01*k2k_m3_1xSpine_# kf_R101
+kf_R102   5.00034534976978e-07*k2k_m12_1xSpine_1xSpine_# kf_R102
+kr_R102   0.01*k2k_m3_1xSpine_# kr_R102
+kf_R103   0.01*k2k_m3_1xSpine_# kf_R103
+kf_R104   5.00034534976978e-07*k2k_m12_1xSpine_1xSpine_# kf_R104
+kr_R104   0.01*k2k_m3_1xSpine_# kr_R104
+kf_R105   0.01*k2k_m3_1xSpine_# kf_R105
+kf_R106   5.00034534976978e-07*k2k_m12_1xSpine_1xSpine_# kf_R106
+kr_R106   0.01*k2k_m3_1xSpine_# kr_R106
+kf_R107   0.01*k2k_m3_1xSpine_# kf_R107
+kf_R108   0.000500034534976978*k2k_m3_1xSpine_# kf_R108
+kr_R108   1e-06*k2k_m3_1xSpine_# kr_R108
+kf_R109   0.000500034534976978*k2k_m3_1xSpine_# kf_R109
+kr_R109   1e-06*k2k_m3_1xSpine_# kr_R109
+kf_R110   0.000500034534976978*k2k_m3_1xSpine_# kf_R110
+kr_R110   1e-06*k2k_m3_1xSpine_# kr_R110
+kf_R111   0.000500034534976978*k2k_m3_1xSpine_# kf_R111
+kr_R111   1e-06*k2k_m3_1xSpine_# kr_R111
+kf_R112   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R112
+kr_R112   0.000400036851046125*k2k_m3_1xSpine_# kr_R112
+kf_R113   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R113
+kr_R113   0.0400036851046125*k2k_m3_1xSpine_# kr_R113
+kf_R114   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R114
+kr_R114   0.400000007987242*k2k_m3_1xSpine_# kr_R114
+kf_R115   6.00067353864116e-06*k2k_m12_1xSpine_1xSpine_# kf_R115
+kr_R115   0.00199986186963274*k2k_m3_1xSpine_# kr_R115
+kf_R116   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R116
+kr_R116   0.01*k2k_m3_1xSpine_# kr_R116
+kf_R117   8.000184448551e-07*k2k_m12_1xSpine_1xSpine_# kf_R117
+kr_R117   0.001*k2k_m3_1xSpine_# kr_R117
+kf_R118   0.001*k2k_m3_1xSpine_# kf_R118
+kf_R119   0.000500034534976978*k2k_m3_1xSpine_# kf_R119
+kf_R120   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R120
+kr_R120   0.0400036851046125*k2k_m3_1xSpine_# kr_R120
+kf_R121   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R121
+kr_R121   0.400000007987242*k2k_m3_1xSpine_# kr_R121
+kf_R122   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R122
+kr_R122   4.00000007987242*k2k_m3_1xSpine_# kr_R122
+kf_R123   0.0001*k2k_m12_1xSpine_1xSpine_# kf_R123
+kr_R123   0.1*k2k_m3_1xSpine_# kr_R123
+kf_R124   6.00067353864116e-06*k2k_m12_1xSpine_1xSpine_# kf_R124
+kr_R124   0.00199986186963274*k2k_m3_1xSpine_# kr_R124
+kf_R125   0.000500034534976978*k2k_m3_1xSpine_# kf_R125
+kr_R125   0.000500034534976978*k2k_m3_1xSpine_# kr_R125
+kf_R126   0.000500034534976978*k2k_m3_1xSpine_# kf_R126
+kr_R126   0.000500034534976978*k2k_m3_1xSpine_# kr_R126
+kf_R127   0.000500034534976978*k2k_m3_1xSpine_# kf_R127
+kr_R127   0.000500034534976978*k2k_m3_1xSpine_# kr_R127
+kf_R128   0.000500034534976978*k2k_m3_1xSpine_# kf_R128
+kr_R128   0.000500034534976978*k2k_m3_1xSpine_# kr_R128
+kf_R129   1e-06*k2k_m3_1xSpine_# kf_R129
+kr_R129   0.000500034534976978*k2k_m3_1xSpine_# kr_R129
+kf_R130   3.59997927043357e-07*k2k_m12_1xSpine_1xSpine_# kf_R130
+kr_R130   0.022998525866862*k2k_m3_1xSpine_# kr_R130
+kf_R131   0.00390031784475066*k2k_m3_1xSpine_# kf_R131
+kf_R132   1.10001852750622e-06*k2k_m12_1xSpine_1xSpine_# kf_R132
+kr_R132   0.00540007759066593*k2k_m3_1xSpine_# kr_R132
+kf_R133   10.0*k2k_m3_1xSpine_# kf_R133
+kf_R134   3.59997927043357e-07*k2k_m12_1xSpine_1xSpine_# kf_R134
+kr_R134   0.022998525866862*k2k_m3_1xSpine_# kr_R134
+kf_R135   0.00390031784475066*k2k_m3_1xSpine_# kf_R135
+kf_R136   1.10001852750622e-06*k2k_m12_1xSpine_1xSpine_# kf_R136
+kr_R136   0.00540007759066593*k2k_m3_1xSpine_# kr_R136
+kf_R137   10.0*k2k_m3_1xSpine_# kf_R137
+DA_start 100.0    # DA_start
+DA_max 1480.0    # DA_max
+ATP_expression 5000000.0    # ATP_expression
+Ca_expression 1.0    # Ca_expression
+end parameters
+begin compartments
+Spine   3   1.0
+end compartments
+begin molecule types
+AC5()    # AC5
+AC5_ATP()    # AC5_ATP
+AC5_Ca()    # AC5_Ca
+AC5_Ca_ATP()    # AC5_Ca_ATP
+AC5_Ca_GaolfGTP()    # AC5_Ca_GaolfGTP
+AC5_Ca_GaolfGTP_ATP()    # AC5_Ca_GaolfGTP_ATP
+AC5_GaolfGTP()    # AC5_GaolfGTP
+AC5_GaolfGTP_ATP()    # AC5_GaolfGTP_ATP
+AMP()    # AMP
+ATP()    # ATP
+B56PP2A()    # B56PP2A
+B56PP2A_D32p75()    # B56PP2A_D32p75
+B56PP2A_pARPP21()    # B56PP2A_pARPP21
+B56PP2Ap()    # B56PP2Ap
+B56PP2Ap_D32p75()    # B56PP2Ap_D32p75
+B56PP2Ap_pARPP21()    # B56PP2Ap_pARPP21
+B72PP2A()    # B72PP2A
+B72PP2A_D32p34()    # B72PP2A_D32p34
+B72PP2A_D32p75()    # B72PP2A_D32p75
+B72PP2A_pARPP21()    # B72PP2A_pARPP21
+B72PP2A_Ca_D32p34()    # B72PP2A_Ca_D32p34
+B72PP2A_Ca_D32p75()    # B72PP2A_Ca_D32p75
+B72PP2A_Ca()    # B72PP2A_Ca
+B72PP2A_Ca_pARPP21()    # B72PP2A_Ca_pARPP21
+Ca()    # Ca
+CaM()    # CaM
+CaM_Ca2()    # CaM_Ca2
+CaM_Ca4()    # CaM_Ca4
+CaM_Ca4_pARPP21()    # CaM_Ca4_pARPP21
+CaMKII()    # CaMKII
+CaMKII_CaM_Ca4()    # CaMKII_CaM_Ca4
+CaMKII_CaM()    # CaMKII_CaM
+CaMKII_CaM_Ca2()    # CaMKII_CaM_Ca2
+CaMKII_CaM_Ca2_psd()    # CaMKII_CaM_Ca2_psd
+CaMKII_CaM_psd()    # CaMKII_CaM_psd
+CaMKII_CaM_Ca4_psd()    # CaMKII_CaM_Ca4_psd
+CaMKII_psd()    # CaMKII_psd
+cAMP()    # cAMP
+Substrate()    # Substrate
+CDK5()    # CDK5
+CDK5_D32()    # CDK5_D32
+D1R()    # D1R
+D1R_DA()    # D1R_DA
+D1R_Golf_DA()    # D1R_Golf_DA
+D1R_Golf()    # D1R_Golf
+D32p34()    # D32p34
+D32p75()    # D32p75
+D32()    # D32
+DA()    # DA
+GaolfGDP()    # GaolfGDP
+GaolfGTP()    # GaolfGTP
+Gbgolf()    # Gbgolf
+Golf()    # Golf
+pCaMKII()    # pCaMKII
+pCaMKII_CaM_Ca4()    # pCaMKII_CaM_Ca4
+pCaMKII_CaM()    # pCaMKII_CaM
+pCaMKII_CaM_Ca2()    # pCaMKII_CaM_Ca2
+pCaMKII_CaM_Ca2_psd()    # pCaMKII_CaM_Ca2_psd
+pCaMKII_CaM_psd()    # pCaMKII_CaM_psd
+pCaMKII_CaM_Ca4_psd()    # pCaMKII_CaM_Ca4_psd
+pCaMKII_psd()    # pCaMKII_psd
+pSubstrate()    # pSubstrate
+PDE4()    # PDE4
+PDE4_cAMP()    # PDE4_cAMP
+PDE10r()    # PDE10r
+PDE10r_cAMP()    # PDE10r_cAMP
+PDE10c()    # PDE10c
+PDE10c_cAMP()    # PDE10c_cAMP
+PKA()    # PKA
+PKAc()    # PKAc
+PKAc_B56PP2A()    # PKAc_B56PP2A
+PKAc_D32()    # PKAc_D32
+PKAc_ARPP21()    # PKAc_ARPP21
+PKA_Ca2MP()    # PKA_Ca2MP
+PKA_Ca4MP()    # PKA_Ca4MP
+PKAc_D32p75()    # PKAc_D32p75
+PKAreg()    # PKAreg
+PP1()    # PP1
+PP1_pCaMKII_psd()    # PP1_pCaMKII_psd
+PP1_pSubstrate()    # PP1_pSubstrate
+PP1_D32p34()    # PP1_D32p34
+CaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd()    # CaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd
+pCaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd()    # pCaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd
+CaMKII_CaM_Ca4_CaMKII_CaM_Ca4()    # CaMKII_CaM_Ca4_CaMKII_CaM_Ca4
+pCaMKII_CaM_Ca4_CaMKII_CaM_Ca4()    # pCaMKII_CaM_Ca4_CaMKII_CaM_Ca4
+PP2B()    # PP2B
+PP2Bc()    # PP2Bc
+PP2Bc_D32p34()    # PP2Bc_D32p34
+PP2B_CaM()    # PP2B_CaM
+PP2B_CaM_Ca2()    # PP2B_CaM_Ca2
+pARPP21()    # pARPP21
+ARPP21()    # ARPP21
+pCaMKII_psd_Substrate()    # pCaMKII_psd_Substrate
+pCaMKII_CaM_psd_Substrate()    # pCaMKII_CaM_psd_Substrate
+pCaMKII_CaM_Ca2_psd_Substrate()    # pCaMKII_CaM_Ca2_psd_Substrate
+pCaMKII_CaM_Ca4_psd_Substrate()    # pCaMKII_CaM_Ca4_psd_Substrate
+CaMKII_CaM_psd_Substrate()    # CaMKII_CaM_psd_Substrate
+CaMKII_CaM_Ca2_psd_Substrate()    # CaMKII_CaM_Ca2_psd_Substrate
+CaMKII_CaM_Ca4_psd_Substrate()    # CaMKII_CaM_Ca4_psd_Substrate
+DA_expression()    # DA_expression
+pSubstrate_out()    # pSubstrate_out
+PP1_out()    # PP1_out
+CaM_out()    # CaM_out
+D32_out()    # D32_out
+end molecule types
+begin species
+AC5()@Spine 700.0*c2c_m9_Spine # # AC5, is_const False, is_boundary False
+AC5_ATP()@Spine 0.0*c2c_m9_Spine # # AC5_ATP, is_const False, is_boundary False
+AC5_Ca()@Spine 0.0*c2c_m9_Spine # # AC5_Ca, is_const False, is_boundary False
+AC5_Ca_ATP()@Spine 0.0*c2c_m9_Spine # # AC5_Ca_ATP, is_const False, is_boundary False
+AC5_Ca_GaolfGTP()@Spine 0.0*c2c_m9_Spine # # AC5_Ca_GaolfGTP, is_const False, is_boundary False
+AC5_Ca_GaolfGTP_ATP()@Spine 0.0*c2c_m9_Spine # # AC5_Ca_GaolfGTP_ATP, is_const False, is_boundary False
+AC5_GaolfGTP()@Spine 0.0*c2c_m9_Spine # # AC5_GaolfGTP, is_const False, is_boundary False
+AC5_GaolfGTP_ATP()@Spine 0.0*c2c_m9_Spine # # AC5_GaolfGTP_ATP, is_const False, is_boundary False
+$AMP()@Spine 0.0*c2c_m9_Spine # # AMP, is_const False, is_boundary True
+$ATP()@Spine 5000000.0*c2c_m9_Spine # # ATP, is_const False, is_boundary True
+B56PP2A()@Spine 2000.0*c2c_m9_Spine # # B56PP2A, is_const False, is_boundary False
+B56PP2A_D32p75()@Spine 0.0*c2c_m9_Spine # # B56PP2A_D32p75, is_const False, is_boundary False
+B56PP2A_pARPP21()@Spine 0.0*c2c_m9_Spine # # B56PP2A_pARPP21, is_const False, is_boundary False
+B56PP2Ap()@Spine 0.0*c2c_m9_Spine # # B56PP2Ap, is_const False, is_boundary False
+B56PP2Ap_D32p75()@Spine 0.0*c2c_m9_Spine # # B56PP2Ap_D32p75, is_const False, is_boundary False
+B56PP2Ap_pARPP21()@Spine 0.0*c2c_m9_Spine # # B56PP2Ap_pARPP21, is_const False, is_boundary False
+B72PP2A()@Spine 2000.0*c2c_m9_Spine # # B72PP2A, is_const False, is_boundary False
+B72PP2A_D32p34()@Spine 0.0*c2c_m9_Spine # # B72PP2A_D32p34, is_const False, is_boundary False
+B72PP2A_D32p75()@Spine 0.0*c2c_m9_Spine # # B72PP2A_D32p75, is_const False, is_boundary False
+B72PP2A_pARPP21()@Spine 0.0*c2c_m9_Spine # # B72PP2A_pARPP21, is_const False, is_boundary False
+B72PP2A_Ca_D32p34()@Spine 0.0*c2c_m9_Spine # # B72PP2A_Ca_D32p34, is_const False, is_boundary False
+B72PP2A_Ca_D32p75()@Spine 0.0*c2c_m9_Spine # # B72PP2A_Ca_D32p75, is_const False, is_boundary False
+B72PP2A_Ca()@Spine 0.0*c2c_m9_Spine # # B72PP2A_Ca, is_const False, is_boundary False
+B72PP2A_Ca_pARPP21()@Spine 0.0*c2c_m9_Spine # # B72PP2A_Ca_pARPP21, is_const False, is_boundary False
+$Ca()@Spine 60.0*c2c_m9_Spine # # Ca, is_const False, is_boundary True
+CaM()@Spine 9000.0*c2c_m9_Spine # # CaM, is_const False, is_boundary False
+CaM_Ca2()@Spine 0.0*c2c_m9_Spine # # CaM_Ca2, is_const False, is_boundary False
+CaM_Ca4()@Spine 0.0*c2c_m9_Spine # # CaM_Ca4, is_const False, is_boundary False
+CaM_Ca4_pARPP21()@Spine 0.0*c2c_m9_Spine # # CaM_Ca4_pARPP21, is_const False, is_boundary False
+CaMKII()@Spine 20000.0*c2c_m9_Spine # # CaMKII, is_const False, is_boundary False
+CaMKII_CaM_Ca4()@Spine 0.0*c2c_m9_Spine # # CaMKII_CaM_Ca4, is_const False, is_boundary False
+CaMKII_CaM()@Spine 0.0*c2c_m9_Spine # # CaMKII_CaM, is_const False, is_boundary False
+CaMKII_CaM_Ca2()@Spine 0.0*c2c_m9_Spine # # CaMKII_CaM_Ca2, is_const False, is_boundary False
+CaMKII_CaM_Ca2_psd()@Spine 0.0*c2c_m9_Spine # # CaMKII_CaM_Ca2_psd, is_const False, is_boundary False
+CaMKII_CaM_psd()@Spine 0.0*c2c_m9_Spine # # CaMKII_CaM_psd, is_const False, is_boundary False
+CaMKII_CaM_Ca4_psd()@Spine 0.0*c2c_m9_Spine # # CaMKII_CaM_Ca4_psd, is_const False, is_boundary False
+CaMKII_psd()@Spine 0.0*c2c_m9_Spine # # CaMKII_psd, is_const False, is_boundary False
+cAMP()@Spine 0.0*c2c_m9_Spine # # cAMP, is_const False, is_boundary False
+Substrate()@Spine 3000.0*c2c_m9_Spine # # Substrate, is_const False, is_boundary False
+CDK5()@Spine 1800.0*c2c_m9_Spine # # CDK5, is_const False, is_boundary False
+CDK5_D32()@Spine 0.0*c2c_m9_Spine # # CDK5_D32, is_const False, is_boundary False
+D1R()@Spine 2000.0*c2c_m9_Spine # # D1R, is_const False, is_boundary False
+D1R_DA()@Spine 0.0*c2c_m9_Spine # # D1R_DA, is_const False, is_boundary False
+D1R_Golf_DA()@Spine 0.0*c2c_m9_Spine # # D1R_Golf_DA, is_const False, is_boundary False
+D1R_Golf()@Spine 0.0*c2c_m9_Spine # # D1R_Golf, is_const False, is_boundary False
+D32p34()@Spine 0.0*c2c_m9_Spine # # D32p34, is_const False, is_boundary False
+D32p75()@Spine 0.0*c2c_m9_Spine # # D32p75, is_const False, is_boundary False
+D32()@Spine 50000.0*c2c_m9_Spine # # D32, is_const False, is_boundary False
+$DA()@Spine 20.0*c2c_m9_Spine # # DA, is_const False, is_boundary True
+GaolfGDP()@Spine 0.0*c2c_m9_Spine # # GaolfGDP, is_const False, is_boundary False
+GaolfGTP()@Spine 0.0*c2c_m9_Spine # # GaolfGTP, is_const False, is_boundary False
+Gbgolf()@Spine 0.0*c2c_m9_Spine # # Gbgolf, is_const False, is_boundary False
+Golf()@Spine 2000.0*c2c_m9_Spine # # Golf, is_const False, is_boundary False
+pCaMKII()@Spine 0.0*c2c_m9_Spine # # pCaMKII, is_const False, is_boundary False
+pCaMKII_CaM_Ca4()@Spine 0.0*c2c_m9_Spine # # pCaMKII_CaM_Ca4, is_const False, is_boundary False
+pCaMKII_CaM()@Spine 0.0*c2c_m9_Spine # # pCaMKII_CaM, is_const False, is_boundary False
+pCaMKII_CaM_Ca2()@Spine 0.0*c2c_m9_Spine # # pCaMKII_CaM_Ca2, is_const False, is_boundary False
+pCaMKII_CaM_Ca2_psd()@Spine 0.0*c2c_m9_Spine # # pCaMKII_CaM_Ca2_psd, is_const False, is_boundary False
+pCaMKII_CaM_psd()@Spine 0.0*c2c_m9_Spine # # pCaMKII_CaM_psd, is_const False, is_boundary False
+pCaMKII_CaM_Ca4_psd()@Spine 0.0*c2c_m9_Spine # # pCaMKII_CaM_Ca4_psd, is_const False, is_boundary False
+pCaMKII_psd()@Spine 0.0*c2c_m9_Spine # # pCaMKII_psd, is_const False, is_boundary False
+pSubstrate()@Spine 0.0*c2c_m9_Spine # # pSubstrate, is_const False, is_boundary False
+PDE4()@Spine 2000.0*c2c_m9_Spine # # PDE4, is_const False, is_boundary False
+PDE4_cAMP()@Spine 0.0*c2c_m9_Spine # # PDE4_cAMP, is_const False, is_boundary False
+PDE10r()@Spine 700.0*c2c_m9_Spine # # PDE10r, is_const False, is_boundary False
+PDE10r_cAMP()@Spine 0.0*c2c_m9_Spine # # PDE10r_cAMP, is_const False, is_boundary False
+PDE10c()@Spine 0.0*c2c_m9_Spine # # PDE10c, is_const False, is_boundary False
+PDE10c_cAMP()@Spine 0.0*c2c_m9_Spine # # PDE10c_cAMP, is_const False, is_boundary False
+PKA()@Spine 1200.0*c2c_m9_Spine # # PKA, is_const False, is_boundary False
+PKAc()@Spine 0.0*c2c_m9_Spine # # PKAc, is_const False, is_boundary False
+PKAc_B56PP2A()@Spine 0.0*c2c_m9_Spine # # PKAc_B56PP2A, is_const False, is_boundary False
+PKAc_D32()@Spine 0.0*c2c_m9_Spine # # PKAc_D32, is_const False, is_boundary False
+PKAc_ARPP21()@Spine 0.0*c2c_m9_Spine # # PKAc_ARPP21, is_const False, is_boundary False
+PKA_Ca2MP()@Spine 0.0*c2c_m9_Spine # # PKA_Ca2MP, is_const False, is_boundary False
+PKA_Ca4MP()@Spine 0.0*c2c_m9_Spine # # PKA_Ca4MP, is_const False, is_boundary False
+PKAc_D32p75()@Spine 0.0*c2c_m9_Spine # # PKAc_D32p75, is_const False, is_boundary False
+PKAreg()@Spine 0.0*c2c_m9_Spine # # PKAreg, is_const False, is_boundary False
+PP1()@Spine 3000.0*c2c_m9_Spine # # PP1, is_const False, is_boundary False
+PP1_pCaMKII_psd()@Spine 0.0*c2c_m9_Spine # # PP1_pCaMKII_psd, is_const False, is_boundary False
+PP1_pSubstrate()@Spine 0.0*c2c_m9_Spine # # PP1_pSubstrate, is_const False, is_boundary False
+PP1_D32p34()@Spine 0.0*c2c_m9_Spine # # PP1_D32p34, is_const False, is_boundary False
+CaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd()@Spine 0.0*c2c_m9_Spine # # CaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd, is_const False, is_boundary False
+pCaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd()@Spine 0.0*c2c_m9_Spine # # pCaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd, is_const False, is_boundary False
+CaMKII_CaM_Ca4_CaMKII_CaM_Ca4()@Spine 0.0*c2c_m9_Spine # # CaMKII_CaM_Ca4_CaMKII_CaM_Ca4, is_const False, is_boundary False
+pCaMKII_CaM_Ca4_CaMKII_CaM_Ca4()@Spine 0.0*c2c_m9_Spine # # pCaMKII_CaM_Ca4_CaMKII_CaM_Ca4, is_const False, is_boundary False
+PP2B()@Spine 4000.0*c2c_m9_Spine # # PP2B, is_const False, is_boundary False
+PP2Bc()@Spine 0.0*c2c_m9_Spine # # PP2Bc, is_const False, is_boundary False
+PP2Bc_D32p34()@Spine 0.0*c2c_m9_Spine # # PP2Bc_D32p34, is_const False, is_boundary False
+PP2B_CaM()@Spine 0.0*c2c_m9_Spine # # PP2B_CaM, is_const False, is_boundary False
+PP2B_CaM_Ca2()@Spine 0.0*c2c_m9_Spine # # PP2B_CaM_Ca2, is_const False, is_boundary False
+pARPP21()@Spine 0.0*c2c_m9_Spine # # pARPP21, is_const False, is_boundary False
+ARPP21()@Spine 20000.0*c2c_m9_Spine # # ARPP21, is_const False, is_boundary False
+pCaMKII_psd_Substrate()@Spine 0.0*c2c_m9_Spine # # pCaMKII_psd_Substrate, is_const False, is_boundary False
+pCaMKII_CaM_psd_Substrate()@Spine 0.0*c2c_m9_Spine # # pCaMKII_CaM_psd_Substrate, is_const False, is_boundary False
+pCaMKII_CaM_Ca2_psd_Substrate()@Spine 0.0*c2c_m9_Spine # # pCaMKII_CaM_Ca2_psd_Substrate, is_const False, is_boundary False
+pCaMKII_CaM_Ca4_psd_Substrate()@Spine 0.0*c2c_m9_Spine # # pCaMKII_CaM_Ca4_psd_Substrate, is_const False, is_boundary False
+CaMKII_CaM_psd_Substrate()@Spine 0.0*c2c_m9_Spine # # CaMKII_CaM_psd_Substrate, is_const False, is_boundary False
+CaMKII_CaM_Ca2_psd_Substrate()@Spine 0.0*c2c_m9_Spine # # CaMKII_CaM_Ca2_psd_Substrate, is_const False, is_boundary False
+CaMKII_CaM_Ca4_psd_Substrate()@Spine 0.0*c2c_m9_Spine # # CaMKII_CaM_Ca4_psd_Substrate, is_const False, is_boundary False
+$DA_expression()@Spine 0.0*c2c_0_Spine # # DA_expression, is_const False, is_boundary True
+$pSubstrate_out()@Spine 0.0*c2c_m9_Spine # # pSubstrate_out, is_const False, is_boundary True
+$PP1_out()@Spine 0.0*c2c_m9_Spine # # PP1_out, is_const False, is_boundary True
+$CaM_out()@Spine 0.0*c2c_m9_Spine # # CaM_out, is_const False, is_boundary True
+$D32_out()@Spine 0.0*c2c_m9_Spine # # D32_out, is_const False, is_boundary True
+end species
+begin observables
+Molecules AC5 @Spine:AC5()    # AC5
+Molecules AC5_ATP @Spine:AC5_ATP()    # AC5_ATP
+Molecules AC5_Ca @Spine:AC5_Ca()    # AC5_Ca
+Molecules AC5_Ca_ATP @Spine:AC5_Ca_ATP()    # AC5_Ca_ATP
+Molecules AC5_Ca_GaolfGTP @Spine:AC5_Ca_GaolfGTP()    # AC5_Ca_GaolfGTP
+Molecules AC5_Ca_GaolfGTP_ATP @Spine:AC5_Ca_GaolfGTP_ATP()    # AC5_Ca_GaolfGTP_ATP
+Molecules AC5_GaolfGTP @Spine:AC5_GaolfGTP()    # AC5_GaolfGTP
+Molecules AC5_GaolfGTP_ATP @Spine:AC5_GaolfGTP_ATP()    # AC5_GaolfGTP_ATP
+Molecules AMP @Spine:AMP()    # AMP
+Molecules ATP @Spine:ATP()    # ATP
+Molecules B56PP2A @Spine:B56PP2A()    # B56PP2A
+Molecules B56PP2A_D32p75 @Spine:B56PP2A_D32p75()    # B56PP2A_D32p75
+Molecules B56PP2A_pARPP21 @Spine:B56PP2A_pARPP21()    # B56PP2A_pARPP21
+Molecules B56PP2Ap @Spine:B56PP2Ap()    # B56PP2Ap
+Molecules B56PP2Ap_D32p75 @Spine:B56PP2Ap_D32p75()    # B56PP2Ap_D32p75
+Molecules B56PP2Ap_pARPP21 @Spine:B56PP2Ap_pARPP21()    # B56PP2Ap_pARPP21
+Molecules B72PP2A @Spine:B72PP2A()    # B72PP2A
+Molecules B72PP2A_D32p34 @Spine:B72PP2A_D32p34()    # B72PP2A_D32p34
+Molecules B72PP2A_D32p75 @Spine:B72PP2A_D32p75()    # B72PP2A_D32p75
+Molecules B72PP2A_pARPP21 @Spine:B72PP2A_pARPP21()    # B72PP2A_pARPP21
+Molecules B72PP2A_Ca_D32p34 @Spine:B72PP2A_Ca_D32p34()    # B72PP2A_Ca_D32p34
+Molecules B72PP2A_Ca_D32p75 @Spine:B72PP2A_Ca_D32p75()    # B72PP2A_Ca_D32p75
+Molecules B72PP2A_Ca @Spine:B72PP2A_Ca()    # B72PP2A_Ca
+Molecules B72PP2A_Ca_pARPP21 @Spine:B72PP2A_Ca_pARPP21()    # B72PP2A_Ca_pARPP21
+Molecules Ca @Spine:Ca()    # Ca
+Molecules CaM @Spine:CaM()    # CaM
+Molecules CaM_Ca2 @Spine:CaM_Ca2()    # CaM_Ca2
+Molecules CaM_Ca4 @Spine:CaM_Ca4()    # CaM_Ca4
+Molecules CaM_Ca4_pARPP21 @Spine:CaM_Ca4_pARPP21()    # CaM_Ca4_pARPP21
+Molecules CaMKII @Spine:CaMKII()    # CaMKII
+Molecules CaMKII_CaM_Ca4 @Spine:CaMKII_CaM_Ca4()    # CaMKII_CaM_Ca4
+Molecules CaMKII_CaM @Spine:CaMKII_CaM()    # CaMKII_CaM
+Molecules CaMKII_CaM_Ca2 @Spine:CaMKII_CaM_Ca2()    # CaMKII_CaM_Ca2
+Molecules CaMKII_CaM_Ca2_psd @Spine:CaMKII_CaM_Ca2_psd()    # CaMKII_CaM_Ca2_psd
+Molecules CaMKII_CaM_psd @Spine:CaMKII_CaM_psd()    # CaMKII_CaM_psd
+Molecules CaMKII_CaM_Ca4_psd @Spine:CaMKII_CaM_Ca4_psd()    # CaMKII_CaM_Ca4_psd
+Molecules CaMKII_psd @Spine:CaMKII_psd()    # CaMKII_psd
+Molecules cAMP @Spine:cAMP()    # cAMP
+Molecules Substrate @Spine:Substrate()    # Substrate
+Molecules CDK5 @Spine:CDK5()    # CDK5
+Molecules CDK5_D32 @Spine:CDK5_D32()    # CDK5_D32
+Molecules D1R @Spine:D1R()    # D1R
+Molecules D1R_DA @Spine:D1R_DA()    # D1R_DA
+Molecules D1R_Golf_DA @Spine:D1R_Golf_DA()    # D1R_Golf_DA
+Molecules D1R_Golf @Spine:D1R_Golf()    # D1R_Golf
+Molecules D32p34 @Spine:D32p34()    # D32p34
+Molecules D32p75 @Spine:D32p75()    # D32p75
+Molecules D32 @Spine:D32()    # D32
+Molecules DA @Spine:DA()    # DA
+Molecules GaolfGDP @Spine:GaolfGDP()    # GaolfGDP
+Molecules GaolfGTP @Spine:GaolfGTP()    # GaolfGTP
+Molecules Gbgolf @Spine:Gbgolf()    # Gbgolf
+Molecules Golf @Spine:Golf()    # Golf
+Molecules pCaMKII @Spine:pCaMKII()    # pCaMKII
+Molecules pCaMKII_CaM_Ca4 @Spine:pCaMKII_CaM_Ca4()    # pCaMKII_CaM_Ca4
+Molecules pCaMKII_CaM @Spine:pCaMKII_CaM()    # pCaMKII_CaM
+Molecules pCaMKII_CaM_Ca2 @Spine:pCaMKII_CaM_Ca2()    # pCaMKII_CaM_Ca2
+Molecules pCaMKII_CaM_Ca2_psd @Spine:pCaMKII_CaM_Ca2_psd()    # pCaMKII_CaM_Ca2_psd
+Molecules pCaMKII_CaM_psd @Spine:pCaMKII_CaM_psd()    # pCaMKII_CaM_psd
+Molecules pCaMKII_CaM_Ca4_psd @Spine:pCaMKII_CaM_Ca4_psd()    # pCaMKII_CaM_Ca4_psd
+Molecules pCaMKII_psd @Spine:pCaMKII_psd()    # pCaMKII_psd
+Molecules pSubstrate @Spine:pSubstrate()    # pSubstrate
+Molecules PDE4 @Spine:PDE4()    # PDE4
+Molecules PDE4_cAMP @Spine:PDE4_cAMP()    # PDE4_cAMP
+Molecules PDE10r @Spine:PDE10r()    # PDE10r
+Molecules PDE10r_cAMP @Spine:PDE10r_cAMP()    # PDE10r_cAMP
+Molecules PDE10c @Spine:PDE10c()    # PDE10c
+Molecules PDE10c_cAMP @Spine:PDE10c_cAMP()    # PDE10c_cAMP
+Molecules PKA @Spine:PKA()    # PKA
+Molecules PKAc @Spine:PKAc()    # PKAc
+Molecules PKAc_B56PP2A @Spine:PKAc_B56PP2A()    # PKAc_B56PP2A
+Molecules PKAc_D32 @Spine:PKAc_D32()    # PKAc_D32
+Molecules PKAc_ARPP21 @Spine:PKAc_ARPP21()    # PKAc_ARPP21
+Molecules PKA_Ca2MP @Spine:PKA_Ca2MP()    # PKA_Ca2MP
+Molecules PKA_Ca4MP @Spine:PKA_Ca4MP()    # PKA_Ca4MP
+Molecules PKAc_D32p75 @Spine:PKAc_D32p75()    # PKAc_D32p75
+Molecules PKAreg @Spine:PKAreg()    # PKAreg
+Molecules PP1 @Spine:PP1()    # PP1
+Molecules PP1_pCaMKII_psd @Spine:PP1_pCaMKII_psd()    # PP1_pCaMKII_psd
+Molecules PP1_pSubstrate @Spine:PP1_pSubstrate()    # PP1_pSubstrate
+Molecules PP1_D32p34 @Spine:PP1_D32p34()    # PP1_D32p34
+Molecules CaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd @Spine:CaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd()    # CaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd
+Molecules pCaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd @Spine:pCaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd()    # pCaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd
+Molecules CaMKII_CaM_Ca4_CaMKII_CaM_Ca4 @Spine:CaMKII_CaM_Ca4_CaMKII_CaM_Ca4()    # CaMKII_CaM_Ca4_CaMKII_CaM_Ca4
+Molecules pCaMKII_CaM_Ca4_CaMKII_CaM_Ca4 @Spine:pCaMKII_CaM_Ca4_CaMKII_CaM_Ca4()    # pCaMKII_CaM_Ca4_CaMKII_CaM_Ca4
+Molecules PP2B @Spine:PP2B()    # PP2B
+Molecules PP2Bc @Spine:PP2Bc()    # PP2Bc
+Molecules PP2Bc_D32p34 @Spine:PP2Bc_D32p34()    # PP2Bc_D32p34
+Molecules PP2B_CaM @Spine:PP2B_CaM()    # PP2B_CaM
+Molecules PP2B_CaM_Ca2 @Spine:PP2B_CaM_Ca2()    # PP2B_CaM_Ca2
+Molecules pARPP21 @Spine:pARPP21()    # pARPP21
+Molecules ARPP21 @Spine:ARPP21()    # ARPP21
+Molecules pCaMKII_psd_Substrate @Spine:pCaMKII_psd_Substrate()    # pCaMKII_psd_Substrate
+Molecules pCaMKII_CaM_psd_Substrate @Spine:pCaMKII_CaM_psd_Substrate()    # pCaMKII_CaM_psd_Substrate
+Molecules pCaMKII_CaM_Ca2_psd_Substrate @Spine:pCaMKII_CaM_Ca2_psd_Substrate()    # pCaMKII_CaM_Ca2_psd_Substrate
+Molecules pCaMKII_CaM_Ca4_psd_Substrate @Spine:pCaMKII_CaM_Ca4_psd_Substrate()    # pCaMKII_CaM_Ca4_psd_Substrate
+Molecules CaMKII_CaM_psd_Substrate @Spine:CaMKII_CaM_psd_Substrate()    # CaMKII_CaM_psd_Substrate
+Molecules CaMKII_CaM_Ca2_psd_Substrate @Spine:CaMKII_CaM_Ca2_psd_Substrate()    # CaMKII_CaM_Ca2_psd_Substrate
+Molecules CaMKII_CaM_Ca4_psd_Substrate @Spine:CaMKII_CaM_Ca4_psd_Substrate()    # CaMKII_CaM_Ca4_psd_Substrate
+Molecules DA_expression @Spine:DA_expression()    # DA_expression
+Molecules pSubstrate_out @Spine:pSubstrate_out()    # pSubstrate_out
+Molecules PP1_out @Spine:PP1_out()    # PP1_out
+Molecules CaM_out @Spine:CaM_out()    # CaM_out
+Molecules D32_out @Spine:D32_out()    # D32_out
+end observables
+begin functions
+end functions
+begin reaction rules
+reaction0: GaolfGTP()@Spine -> GaolfGDP()@Spine kf_R0    # ReactionFlux0
+reaction1: D1R_Golf_DA()@Spine -> Gbgolf()@Spine + D1R_DA()@Spine + GaolfGTP()@Spine kf_R1    # ReactionFlux1
+reaction2: D1R_Golf()@Spine + DA()@Spine <-> D1R_Golf_DA()@Spine kf_R2, kr_R2    # ReactionFlux2
+reaction3: D1R()@Spine + DA()@Spine <-> D1R_DA()@Spine kf_R3, kr_R3    # ReactionFlux3
+reaction4: AC5()@Spine + GaolfGTP()@Spine <-> AC5_GaolfGTP()@Spine kf_R4, kr_R4    # ReactionFlux4
+reaction5: CaM()@Spine + Ca()@Spine <-> CaM_Ca2()@Spine kf_R5, kr_R5    # ReactionFlux5
+reaction6: PP2B()@Spine + CaM()@Spine <-> PP2B_CaM()@Spine kf_R6, kr_R6    # ReactionFlux6
+reaction7: CaM_Ca4()@Spine + PP2B()@Spine <-> PP2Bc()@Spine kf_R7, kr_R7    # ReactionFlux7
+reaction8: PKAc()@Spine + D32()@Spine <-> PKAc_D32()@Spine kf_R8, kr_R8    # ReactionFlux8
+reaction9: PKAc_D32()@Spine -> D32p34()@Spine + PKAc()@Spine kf_R9    # ReactionFlux9
+reaction10: PKAc()@Spine + B56PP2A()@Spine <-> PKAc_B56PP2A()@Spine kf_R10, kr_R10    # ReactionFlux10
+reaction11: PKAc_B56PP2A()@Spine -> B56PP2Ap()@Spine + PKAc()@Spine kf_R11    # ReactionFlux11
+reaction12: D32p34()@Spine + PP1()@Spine <-> PP1_D32p34()@Spine kf_R12, kr_R12    # ReactionFlux12
+reaction13: CDK5()@Spine + D32()@Spine <-> CDK5_D32()@Spine kf_R13, kr_R13    # ReactionFlux13
+reaction14: CDK5_D32()@Spine -> CDK5()@Spine + D32p75()@Spine kf_R14    # ReactionFlux14
+reaction15: D32p75()@Spine + PKAc()@Spine <-> PKAc_D32p75()@Spine kf_R15, kr_R15    # ReactionFlux15
+reaction16: B72PP2A()@Spine + Ca()@Spine <-> B72PP2A_Ca()@Spine kf_R16, kr_R16    # ReactionFlux16
+reaction17: B56PP2Ap()@Spine + D32p75()@Spine <-> B56PP2Ap_D32p75()@Spine kf_R17, kr_R17    # ReactionFlux17
+reaction18: B72PP2A()@Spine + D32p75()@Spine <-> B72PP2A_D32p75()@Spine kf_R18, kr_R18    # ReactionFlux18
+reaction19: D32p75()@Spine + B72PP2A_Ca()@Spine <-> B72PP2A_Ca_D32p75()@Spine kf_R19, kr_R19    # ReactionFlux19
+reaction20: B56PP2Ap_D32p75()@Spine -> B56PP2Ap()@Spine + D32()@Spine kf_R20    # ReactionFlux20
+reaction21: B72PP2A_D32p75()@Spine -> B72PP2A()@Spine + D32()@Spine kf_R21    # ReactionFlux21
+reaction22: B72PP2A_Ca_D32p75()@Spine -> B72PP2A_Ca()@Spine + D32()@Spine kf_R22    # ReactionFlux22
+reaction23: D32p34()@Spine + PP2Bc()@Spine <-> PP2Bc_D32p34()@Spine kf_R23, kr_R23    # ReactionFlux23
+reaction24: CaM_Ca2()@Spine + Ca()@Spine <-> CaM_Ca4()@Spine kf_R24, kr_R24    # ReactionFlux24
+reaction25: Ca()@Spine + PP2B_CaM()@Spine <-> PP2B_CaM_Ca2()@Spine kf_R25, kr_R25    # ReactionFlux25
+reaction26: Ca()@Spine + PP2B_CaM_Ca2()@Spine <-> PP2Bc()@Spine kf_R26, kr_R26    # ReactionFlux26
+reaction27: CaM_Ca2()@Spine + PP2B()@Spine <-> PP2B_CaM_Ca2()@Spine kf_R27, kr_R27    # ReactionFlux27
+reaction28: AC5()@Spine + Ca()@Spine <-> AC5_Ca()@Spine kf_R28, kr_R28    # ReactionFlux28
+reaction29: AC5_Ca()@Spine + GaolfGTP()@Spine <-> AC5_Ca_GaolfGTP()@Spine kf_R29, kr_R29    # ReactionFlux29
+reaction30: D32p75()@Spine + B56PP2A()@Spine <-> B56PP2A_D32p75()@Spine kf_R30, kr_R30    # ReactionFlux30
+reaction31: B56PP2A_D32p75()@Spine -> B56PP2A()@Spine + D32()@Spine kf_R31    # ReactionFlux31
+reaction32: B72PP2A_Ca_D32p34()@Spine -> B72PP2A_Ca()@Spine + D32()@Spine kf_R32    # ReactionFlux32
+reaction33: B72PP2A_D32p34()@Spine -> D32()@Spine + B72PP2A()@Spine kf_R33    # ReactionFlux33
+reaction34: D32p34()@Spine + B72PP2A_Ca()@Spine <-> B72PP2A_Ca_D32p34()@Spine kf_R34, kr_R34    # ReactionFlux34
+reaction35: D32p34()@Spine + B72PP2A()@Spine <-> B72PP2A_D32p34()@Spine kf_R35, kr_R35    # ReactionFlux35
+reaction36: PP2Bc_D32p34()@Spine -> D32()@Spine + PP2Bc()@Spine kf_R36    # ReactionFlux36
+reaction37: B56PP2Ap()@Spine -> B56PP2A()@Spine kf_R37    # ReactionFlux37
+reaction38: cAMP()@Spine + PKA()@Spine <-> PKA_Ca2MP()@Spine kf_R38, kr_R38    # ReactionFlux38
+reaction39: cAMP()@Spine + PKA_Ca2MP()@Spine <-> PKA_Ca4MP()@Spine kf_R39, kr_R39    # ReactionFlux39
+reaction40: PKA_Ca4MP()@Spine <-> PKAc()@Spine + PKAreg()@Spine kf_R40, kr_R40    # ReactionFlux40
+reaction41: cAMP()@Spine + PDE4()@Spine <-> PDE4_cAMP()@Spine kf_R41, kr_R41    # ReactionFlux41
+reaction42: PDE4_cAMP()@Spine -> PDE4()@Spine + AMP()@Spine kf_R42    # ReactionFlux42
+reaction43: PDE10r()@Spine + cAMP()@Spine + cAMP()@Spine <-> PDE10c()@Spine kf_R43, kr_R43    # ReactionFlux43
+reaction44: PDE10r_cAMP()@Spine -> PDE10r()@Spine + AMP()@Spine kf_R44    # ReactionFlux44
+reaction45: cAMP()@Spine + PDE10r()@Spine <-> PDE10r_cAMP()@Spine kf_R45, kr_R45    # ReactionFlux45
+reaction46: PDE10c_cAMP()@Spine -> PDE10c()@Spine + AMP()@Spine kf_R46    # ReactionFlux46
+reaction47: GaolfGDP()@Spine + Gbgolf()@Spine -> Golf()@Spine kf_R47    # ReactionFlux47
+reaction48: AC5_GaolfGTP()@Spine + ATP()@Spine <-> AC5_GaolfGTP_ATP()@Spine kf_R48, kr_R48    # ReactionFlux48
+reaction49: AC5()@Spine + ATP()@Spine <-> AC5_ATP()@Spine kf_R49, kr_R49    # ReactionFlux49
+reaction50: AC5_Ca()@Spine + ATP()@Spine <-> AC5_Ca_ATP()@Spine kf_R50, kr_R50    # ReactionFlux50
+reaction51: AC5_Ca_GaolfGTP()@Spine + ATP()@Spine <-> AC5_Ca_GaolfGTP_ATP()@Spine kf_R51, kr_R51    # ReactionFlux51
+reaction52: GaolfGTP()@Spine + AC5_ATP()@Spine <-> AC5_GaolfGTP_ATP()@Spine kf_R52, kr_R52    # ReactionFlux52
+reaction53: GaolfGTP()@Spine + AC5_Ca_ATP()@Spine <-> AC5_Ca_GaolfGTP_ATP()@Spine kf_R53, kr_R53    # ReactionFlux53
+reaction54: Ca()@Spine + AC5_ATP()@Spine <-> AC5_Ca_ATP()@Spine kf_R54, kr_R54    # ReactionFlux54
+reaction55: AC5_GaolfGTP_ATP()@Spine -> cAMP()@Spine + AC5_GaolfGTP()@Spine kf_R55    # ReactionFlux55
+reaction56: cAMP()@Spine + AC5_GaolfGTP()@Spine -> AC5_GaolfGTP_ATP()@Spine kf_R56    # ReactionFlux56
+reaction57: AC5_ATP()@Spine -> cAMP()@Spine + AC5()@Spine kf_R57    # ReactionFlux57
+reaction58: cAMP()@Spine + AC5()@Spine -> AC5_ATP()@Spine kf_R58    # ReactionFlux58
+reaction59: AC5_Ca_ATP()@Spine -> cAMP()@Spine + AC5_Ca()@Spine kf_R59    # ReactionFlux59
+reaction60: cAMP()@Spine + AC5_Ca()@Spine -> AC5_Ca_ATP()@Spine kf_R60    # ReactionFlux60
+reaction61: AC5_Ca_GaolfGTP_ATP()@Spine -> cAMP()@Spine + AC5_Ca_GaolfGTP()@Spine kf_R61    # ReactionFlux61
+reaction62: cAMP()@Spine + AC5_Ca_GaolfGTP()@Spine -> AC5_Ca_GaolfGTP_ATP()@Spine kf_R62    # ReactionFlux62
+reaction63: AC5_GaolfGTP()@Spine -> AC5()@Spine + GaolfGDP()@Spine kf_R63    # ReactionFlux63
+reaction64: AC5_Ca_GaolfGTP()@Spine -> AC5_Ca()@Spine + GaolfGDP()@Spine kf_R64    # ReactionFlux64
+reaction65: AC5_GaolfGTP_ATP()@Spine -> AC5_ATP()@Spine + GaolfGDP()@Spine kf_R65    # ReactionFlux65
+reaction66: AC5_Ca_GaolfGTP_ATP()@Spine -> AC5_Ca_ATP()@Spine + GaolfGDP()@Spine kf_R66    # ReactionFlux66
+reaction67: D1R()@Spine + Golf()@Spine <-> D1R_Golf()@Spine kf_R67, kr_R67    # ReactionFlux67
+reaction68: Golf()@Spine + D1R_DA()@Spine <-> D1R_Golf_DA()@Spine kf_R68, kr_R68    # ReactionFlux68
+reaction69: cAMP()@Spine + PDE10c()@Spine <-> PDE10c_cAMP()@Spine kf_R69, kr_R69    # ReactionFlux69
+reaction70: CaMKII()@Spine + CaM_Ca4()@Spine <-> CaMKII_CaM_Ca4()@Spine kf_R70, kr_R70    # ReactionFlux70
+reaction71: CaM_Ca2()@Spine + CaMKII()@Spine <-> CaMKII_CaM_Ca2()@Spine kf_R71, kr_R71    # ReactionFlux71
+reaction72: CaM()@Spine + CaMKII()@Spine <-> CaMKII_CaM()@Spine kf_R72, kr_R72    # ReactionFlux72
+reaction73: CaMKII_CaM_Ca2()@Spine + Ca()@Spine <-> CaMKII_CaM_Ca4()@Spine kf_R73, kr_R73    # ReactionFlux73
+reaction74: CaMKII_CaM()@Spine + Ca()@Spine <-> CaMKII_CaM_Ca2()@Spine kf_R74, kr_R74    # ReactionFlux74
+reaction75: pCaMKII_CaM_Ca2()@Spine + Ca()@Spine <-> pCaMKII_CaM_Ca4()@Spine kf_R75, kr_R75    # ReactionFlux75
+reaction76: pCaMKII_CaM()@Spine + Ca()@Spine <-> pCaMKII_CaM_Ca2()@Spine kf_R76, kr_R76    # ReactionFlux76
+reaction77: pCaMKII()@Spine + CaM_Ca4()@Spine <-> pCaMKII_CaM_Ca4()@Spine kf_R77, kr_R77    # ReactionFlux77
+reaction78: pCaMKII()@Spine + CaM_Ca2()@Spine <-> pCaMKII_CaM_Ca2()@Spine kf_R78, kr_R78    # ReactionFlux78
+reaction79: pCaMKII()@Spine + CaM()@Spine <-> pCaMKII_CaM()@Spine kf_R79, kr_R79    # ReactionFlux79
+reaction80: ARPP21()@Spine + PKAc()@Spine <-> PKAc_ARPP21()@Spine kf_R80, kr_R80    # ReactionFlux80
+reaction81: PKAc_ARPP21()@Spine -> PKAc()@Spine + pARPP21()@Spine kf_R81    # ReactionFlux81
+reaction82: pARPP21()@Spine + CaM_Ca4()@Spine <-> CaM_Ca4_pARPP21()@Spine kf_R82, kr_R82    # ReactionFlux82
+reaction83: B72PP2A_Ca_pARPP21()@Spine -> ARPP21()@Spine + B72PP2A_Ca()@Spine kf_R83    # ReactionFlux83
+reaction84: pARPP21()@Spine + B72PP2A_Ca()@Spine <-> B72PP2A_Ca_pARPP21()@Spine kf_R84, kr_R84    # ReactionFlux84
+reaction85: B72PP2A_pARPP21()@Spine -> ARPP21()@Spine + B72PP2A()@Spine kf_R85    # ReactionFlux85
+reaction86: pARPP21()@Spine + B72PP2A()@Spine <-> B72PP2A_pARPP21()@Spine kf_R86, kr_R86    # ReactionFlux86
+reaction87: B56PP2Ap_pARPP21()@Spine -> ARPP21()@Spine + B56PP2Ap()@Spine kf_R87    # ReactionFlux87
+reaction88: pARPP21()@Spine + B56PP2Ap()@Spine <-> B56PP2Ap_pARPP21()@Spine kf_R88, kr_R88    # ReactionFlux88
+reaction89: B56PP2A_pARPP21()@Spine -> ARPP21()@Spine + B56PP2A()@Spine kf_R89    # ReactionFlux89
+reaction90: pARPP21()@Spine + B56PP2A()@Spine <-> B56PP2A_pARPP21()@Spine kf_R90, kr_R90    # ReactionFlux90
+reaction91: pSubstrate()@Spine + PP1()@Spine <-> PP1_pSubstrate()@Spine kf_R91, kr_R91    # ReactionFlux91
+reaction92: PP1_pSubstrate()@Spine -> PP1()@Spine + Substrate()@Spine kf_R92    # ReactionFlux92
+reaction93: Substrate()@Spine + pCaMKII_psd()@Spine <-> pCaMKII_psd_Substrate()@Spine kf_R93, kr_R93    # ReactionFlux93
+reaction94: pCaMKII_psd_Substrate()@Spine -> pCaMKII_psd()@Spine + pSubstrate()@Spine kf_R94    # ReactionFlux94
+reaction95: pCaMKII()@Spine -> CaMKII()@Spine kf_R95    # ReactionFlux95
+reaction96: Substrate()@Spine + pCaMKII_CaM_psd()@Spine <-> pCaMKII_CaM_psd_Substrate()@Spine kf_R96, kr_R96    # ReactionFlux96
+reaction97: pCaMKII_CaM_psd_Substrate()@Spine -> pCaMKII_CaM_psd()@Spine + pSubstrate()@Spine kf_R97    # ReactionFlux97
+reaction98: Substrate()@Spine + pCaMKII_CaM_Ca2_psd()@Spine <-> pCaMKII_CaM_Ca2_psd_Substrate()@Spine kf_R98, kr_R98    # ReactionFlux98
+reaction99: pCaMKII_CaM_Ca2_psd_Substrate()@Spine -> pCaMKII_CaM_Ca2_psd()@Spine + pSubstrate()@Spine kf_R99    # ReactionFlux99
+reaction100: Substrate()@Spine + pCaMKII_CaM_Ca4_psd()@Spine <-> pCaMKII_CaM_Ca4_psd_Substrate()@Spine kf_R100, kr_R100    # ReactionFlux100
+reaction101: pCaMKII_CaM_Ca4_psd_Substrate()@Spine -> pCaMKII_CaM_Ca4_psd()@Spine + pSubstrate()@Spine kf_R101    # ReactionFlux101
+reaction102: Substrate()@Spine + CaMKII_CaM_psd()@Spine <-> CaMKII_CaM_psd_Substrate()@Spine kf_R102, kr_R102    # ReactionFlux102
+reaction103: CaMKII_CaM_psd_Substrate()@Spine -> CaMKII_CaM_psd()@Spine + pSubstrate()@Spine kf_R103    # ReactionFlux103
+reaction104: Substrate()@Spine + CaMKII_CaM_Ca2_psd()@Spine <-> CaMKII_CaM_Ca2_psd_Substrate()@Spine kf_R104, kr_R104    # ReactionFlux104
+reaction105: CaMKII_CaM_Ca2_psd_Substrate()@Spine -> CaMKII_CaM_Ca2_psd()@Spine + pSubstrate()@Spine kf_R105    # ReactionFlux105
+reaction106: Substrate()@Spine + CaMKII_CaM_Ca4_psd()@Spine <-> CaMKII_CaM_Ca4_psd_Substrate()@Spine kf_R106, kr_R106    # ReactionFlux106
+reaction107: CaMKII_CaM_Ca4_psd_Substrate()@Spine -> CaMKII_CaM_Ca4_psd()@Spine + pSubstrate()@Spine kf_R107    # ReactionFlux107
+reaction108: pCaMKII_CaM_Ca4()@Spine <-> pCaMKII_CaM_Ca4_psd()@Spine kf_R108, kr_R108    # ReactionFlux108
+reaction109: pCaMKII_CaM_Ca2()@Spine <-> pCaMKII_CaM_Ca2_psd()@Spine kf_R109, kr_R109    # ReactionFlux109
+reaction110: pCaMKII_CaM()@Spine <-> pCaMKII_CaM_psd()@Spine kf_R110, kr_R110    # ReactionFlux110
+reaction111: pCaMKII()@Spine <-> pCaMKII_psd()@Spine kf_R111, kr_R111    # ReactionFlux111
+reaction112: CaM_Ca4()@Spine + pCaMKII_psd()@Spine <-> pCaMKII_CaM_Ca4_psd()@Spine kf_R112, kr_R112    # ReactionFlux112
+reaction113: pCaMKII_psd()@Spine + CaM_Ca2()@Spine <-> pCaMKII_CaM_Ca2_psd()@Spine kf_R113, kr_R113    # ReactionFlux113
+reaction114: CaM()@Spine + pCaMKII_psd()@Spine <-> pCaMKII_CaM_psd()@Spine kf_R114, kr_R114    # ReactionFlux114
+reaction115: pCaMKII_CaM_psd()@Spine + Ca()@Spine <-> pCaMKII_CaM_Ca2_psd()@Spine kf_R115, kr_R115    # ReactionFlux115
+reaction116: pCaMKII_CaM_Ca2_psd()@Spine + Ca()@Spine <-> pCaMKII_CaM_Ca4_psd()@Spine kf_R116, kr_R116    # ReactionFlux116
+reaction117: pCaMKII_psd()@Spine + PP1()@Spine <-> PP1_pCaMKII_psd()@Spine kf_R117, kr_R117    # ReactionFlux117
+reaction118: PP1_pCaMKII_psd()@Spine -> PP1()@Spine + CaMKII_psd()@Spine kf_R118    # ReactionFlux118
+reaction119: CaMKII_psd()@Spine -> CaMKII()@Spine kf_R119    # ReactionFlux119
+reaction120: CaM_Ca4()@Spine + CaMKII_psd()@Spine <-> CaMKII_CaM_Ca4_psd()@Spine kf_R120, kr_R120    # ReactionFlux120
+reaction121: CaM_Ca2()@Spine + CaMKII_psd()@Spine <-> CaMKII_CaM_Ca2_psd()@Spine kf_R121, kr_R121    # ReactionFlux121
+reaction122: CaM()@Spine + CaMKII_psd()@Spine <-> CaMKII_CaM_psd()@Spine kf_R122, kr_R122    # ReactionFlux122
+reaction123: CaMKII_CaM_Ca2_psd()@Spine + Ca()@Spine <-> CaMKII_CaM_Ca4_psd()@Spine kf_R123, kr_R123    # ReactionFlux123
+reaction124: CaMKII_CaM_psd()@Spine + Ca()@Spine <-> CaMKII_CaM_Ca2_psd()@Spine kf_R124, kr_R124    # ReactionFlux124
+reaction125: CaMKII_CaM()@Spine <-> CaMKII_CaM_psd()@Spine kf_R125, kr_R125    # ReactionFlux125
+reaction126: CaMKII_CaM_Ca2()@Spine <-> CaMKII_CaM_Ca2_psd()@Spine kf_R126, kr_R126    # ReactionFlux126
+reaction127: CaMKII_CaM_Ca4()@Spine <-> CaMKII_CaM_Ca4_psd()@Spine kf_R127, kr_R127    # ReactionFlux127
+reaction128: CaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd()@Spine <-> CaMKII_CaM_Ca4_CaMKII_CaM_Ca4()@Spine kf_R128, kr_R128    # ReactionFlux128
+reaction129: pCaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd()@Spine <-> pCaMKII_CaM_Ca4_CaMKII_CaM_Ca4()@Spine kf_R129, kr_R129    # ReactionFlux129
+reaction130: CaMKII_CaM_Ca4()@Spine + CaMKII_CaM_Ca4()@Spine <-> CaMKII_CaM_Ca4_CaMKII_CaM_Ca4()@Spine kf_R130, kr_R130    # ReactionFlux130
+reaction131: CaMKII_CaM_Ca4_CaMKII_CaM_Ca4()@Spine -> pCaMKII_CaM_Ca4()@Spine + CaMKII_CaM_Ca4()@Spine kf_R131    # ReactionFlux131
+reaction132: pCaMKII_CaM_Ca4()@Spine + CaMKII_CaM_Ca4()@Spine <-> pCaMKII_CaM_Ca4_CaMKII_CaM_Ca4()@Spine kf_R132, kr_R132    # ReactionFlux132
+reaction133: pCaMKII_CaM_Ca4_CaMKII_CaM_Ca4()@Spine -> pCaMKII_CaM_Ca4()@Spine + pCaMKII_CaM_Ca4()@Spine kf_R133    # ReactionFlux133
+reaction134: CaMKII_CaM_Ca4_psd()@Spine + CaMKII_CaM_Ca4_psd()@Spine <-> CaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd()@Spine kf_R134, kr_R134    # ReactionFlux134
+reaction135: CaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd()@Spine -> pCaMKII_CaM_Ca4_psd()@Spine + CaMKII_CaM_Ca4_psd()@Spine kf_R135    # ReactionFlux135
+reaction136: pCaMKII_CaM_Ca4_psd()@Spine + CaMKII_CaM_Ca4_psd()@Spine <-> pCaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd()@Spine kf_R136, kr_R136    # ReactionFlux136
+reaction137: pCaMKII_CaM_Ca4_psd_CaMKII_CaM_Ca4_psd()@Spine -> pCaMKII_CaM_Ca4_psd()@Spine + pCaMKII_CaM_Ca4_psd()@Spine kf_R137    # ReactionFlux137
+end reaction rules
+end model
