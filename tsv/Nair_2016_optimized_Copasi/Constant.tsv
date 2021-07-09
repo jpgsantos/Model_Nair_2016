@@ -1,4 +1,4 @@
-!!SBtab	SBtabVersion='1.0' Document='Nair_2016_optimized' TableName='Constant' TableTitle='Nair_2016_optimized Constant' TableType = 'Constant'			
+!!SBtab	SBtabVersion='1.0' Document='Nair_2016_Copasi' TableName='Constant' TableTitle='Constant' TableType = 'Constant'			
 !ID	!Name	!Value	!Unit	!Comment
 C0	tau_DA1	34.979	millisecond	Variable used by the formula DA_experssion in the Expression table
 C1	tau_DA2	420	millisecond	Variable used by the formula DA_experssion in the Expression table

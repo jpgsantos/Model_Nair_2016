@@ -1,4 +1,4 @@
-!!SBtab	SBtabVersion='1.0' Document='Nair_2016_optimized' TableName='Parameter' TableTitle='Nair_2016_optimized Parameter' TableType = 'Quantity'								
+!!SBtab	SBtabVersion='1.0' Document='Nair_2016_optimized_Copasi' TableName='Parameter' TableTitle='Parameter' TableType = 'Quantity'								
 !ID	!Name	!Unit	!DefaultValue	!Comment	!Location	!Scale	!Value:linspace	!Description	!ReactionFormula
 K0	kf_R0	1/millisecond	-1.5229	kf_GaolfGTP__GaolfGDP	Spine	log10	0.03	independent parameter	GaolfGTP <=> GaolfGDP
 K1	kf_R1	1/millisecond	-1.8239	kf_D1R_Golf_DA__GbgolfXD1R_DAXGaolfGTP	Spine	log10	0.015	independent parameter	D1R_Golf_DA <=> Gbgolf + D1R_DA + GaolfGTP

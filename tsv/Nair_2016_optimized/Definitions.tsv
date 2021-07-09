@@ -1,4 +1,4 @@
-!!SBtab	SBtabVersion='1.0' Document='Nair_2016_optimized' TableName='Definitions' TableTitle='Nair_2016_optimized Definitions' TableType = 'Definition'			
+!!SBtab	SBtabVersion='1.0' Document='Nair_2016_optimized' TableName='Definitions' TableTitle='Definitions' TableType = 'Definition'			
 !ComponentName	!ComponentType	!IsPartOf	!Format	!Description
 Comment	Column	Reaction	string	Comment
 ReferenceName	Column	Reaction	string	Reference title, authors, etc. (as free text)

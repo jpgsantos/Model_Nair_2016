@@ -1,4 +1,4 @@
-!!SBtab	TableName='Defaults' TableType='Quantity' TableTitle='Default units for this model' SBtabVersion='1.0' Document='Nair_2016_optimized'	
+!!SBtab	TableName='Defaults' TableType='Quantity' TableTitle='Default units for this model' SBtabVersion='1.0' Document='Nair_2016_optimized_alternative'	
 !ID	!Name	!Unit
 time	time	second
 volume	volume	liter

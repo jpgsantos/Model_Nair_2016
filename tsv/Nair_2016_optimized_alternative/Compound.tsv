@@ -1,4 +1,4 @@
-!!SBtab	SBtabVersion='1.0' Document='Nair_2016_optimized' TableName='Compound' TableTitle='Nair_2016_optimized Compound' TableType = 'Compound'										
+!!SBtab	SBtabVersion='1.0' Document='Nair_2016_optimized_alternative' TableName='Compound' TableTitle='Compound' TableType = 'Compound'										
 !ID	!Name	!Unit	!InitialValue	!IsConstant	!Assignment	!Interpolation	!Type	!Location	!IsInput	!Identifiers:UniProt	!Identifiers:kegg_compound
 S0	AC5	nanomole/liter	700	false	false	false	kinetic	Spine	false	P84309	K08045
 S1	AC5_ATP	nanomole/liter	0	false	false	false	kinetic	Spine	false		
