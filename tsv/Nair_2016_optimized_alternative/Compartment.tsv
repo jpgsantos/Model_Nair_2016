@@ -1,3 +1,3 @@
 !!SBtab	SBtabVersion='1.0' Document='Nair_2016_optimized_alternative' TableName='Compartment' TableTitle='Compartment' TableType = 'Quantity'		
 !ID	!Name	!Size	!Unit
-V1	Spine	1e-15	liter
+V1	Spine	1	liter
