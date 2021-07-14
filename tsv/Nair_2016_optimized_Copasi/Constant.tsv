@@ -1,0 +1,8 @@
+!!SBtab	SBtabVersion='1.0' Document='Nair_2016_Copasi' TableName='Constant' TableTitle='Constant' TableType = 'Constant'			
+!ID	!Name	!Value	!Unit	!Comment
+C0	tau_DA1	34.979	millisecond	Variable used by the formula DA_experssion in the Expression table
+C1	tau_DA2	420	millisecond	Variable used by the formula DA_experssion in the Expression table
+C2	DA_basal	20	nanomole/liter	Variable used by the formula Ca_experssion in the Expression table
+C3	Ca_basal	60	nanomole/liter	Variable used by the formula DA_experssion in the Expression table
+C4	tau_Ca1	34.979	millisecond	Variable used by the formula Ca_experssion in the Expression table
+C5	tau_Ca2	700	millisecond	Variable used by the formula Ca_experssion in the Expression table

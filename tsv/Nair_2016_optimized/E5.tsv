@@ -1,4 +1,4 @@
-!!SBtab	SBtabVersion='1.0' Document='Nair_2016_optimized' TableName='E5' TableTitle='Nair_2016_optimized E5' TableType = 'QuantityMatrix'								
+!!SBtab	SBtabVersion='1.0' Document='Nair_2016_optimized' TableName='E5' TableTitle='E5' TableType = 'QuantityMatrix'								
 !ID	!Time	>Y0	SD_Y0	>Y1	SD_Y1	>Y2	SD_Y2	>Y3	SD_Y3
 E5T0	0	84.4789	0.84479	2672.0893	26.7209	3200.526	32.0053	36817.5165	368.1752
 E5T1	0.01	84.4789	0.84479	2672.0893	26.7209	3200.526	32.0053	36817.5165	368.1752

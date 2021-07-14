@@ -1,4 +1,4 @@
-!!SBtab	SBtabVersion='1.0' Document='Nair_2016_optimized' TableName='E9I' TableTitle='Nair_2016_optimized E9I' TableType = 'QuantityMatrix'	
+!!SBtab	SBtabVersion='1.0' Document='Nair_2016_optimized' TableName='E9I' TableTitle='E9I' TableType = 'QuantityMatrix'	
 !ID	!Input_Time_S24	>S24
 E9IT0	0	60
 E9IT1	0.01	60

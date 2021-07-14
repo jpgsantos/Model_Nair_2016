@@ -1,0 +1,6 @@
+!!SBtab	SBtabVersion='1.0' Document='Nair_2016_optimized_Copasi' TableName='Input' TableTitle='Input' TableType = 'Quantity'				
+!ID	!Name	!DefaultValue	!Unit	!Location	!Comment
+INP0	DA_start	100	millisecond	Spine	Variable used by the formula DA_experssion in the Expression table
+INP1	DA_max	1480	nanomole/liter	Spine	Variable used by the formula DA_experssion in the Expression table
+INP2	Ca_start	4000	millisecond	Spine	Variable used by the formula Ca_experssion in the Expression table
+INP3	Ca_max	5000	nanomole/liter	Spine	Variable used by the formula Ca_experssion in the Expression table

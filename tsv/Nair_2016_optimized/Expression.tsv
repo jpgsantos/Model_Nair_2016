@@ -1,4 +1,4 @@
-!!SBtab	SBtabVersion='1.0' Document='Nair_2016_optimized' TableName='Expression' TableTitle='Nair_2016_optimized Expression' TableType = 'Expression'			
+!!SBtab	SBtabVersion='1.0' Document='Nair_2016_optimized' TableName='Expression' TableTitle='Expression' TableType = 'Expression'			
 !ID	!Name	!Formula	!Unit	!Location
 EX0	ATP_expression	5000000	nanomole/liter	Spine
 EX1	Ca_expression	1	nanomole/liter	Spine

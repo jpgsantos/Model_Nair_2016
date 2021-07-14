@@ -1,4 +1,4 @@
-!!SBtab	SBtabVersion='1.0' Document='Nair_2016_optimized' TableName='Reaction' TableTitle='Nair_2016_optimized Reaction' TableType = 'Reaction'				
+!!SBtab	SBtabVersion='1.0' Document='Nair_2016_optimized_alternative' TableName='Reaction' TableTitle='Reaction' TableType = 'Reaction'				
 !ID	!Name	!KineticLaw	!IsReversible	!Location	!ReactionFormula
 R0	ReactionFlux0	kf_R0*GaolfGTP	false	Spine	GaolfGTP <=> GaolfGDP
 R1	ReactionFlux1	kf_R1*D1R_Golf_DA	false	Spine	D1R_Golf_DA <=> Gbgolf + D1R_DA + GaolfGTP
