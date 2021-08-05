@@ -1,7 +1,7 @@
 Matlab/Data/
 Matlab/Input_functions/
 Matlab/Results/Diagnostics/
-Matlab/Results/Sensitivity Analysis/
+Matlab/Results/Global Sensitivity Analysis/
 Matlab/Results/Optimization/
 Matlab/Settings/**
 !Matlab/Settings/Nair_2016_optimized.m
