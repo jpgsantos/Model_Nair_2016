@@ -1,0 +1,6 @@
+!!SBtab	SBtabVersion='1.0' Document='Nair_2016_optimized' TableName='Output' TableTitle='Output' TableType = 'Quantity'						
+!ID	!Name	!Comment	!ErrorName	!ErrorType	!Unit	!Location	!Formula
+Y0	pSubstrate_out	pSubstrate	SD_Y0	pSubstrate	nanomole/liter	Spine	pSubstrate
+Y1	PP1_out	PP1	SD_Y1	PP1	nanomole/liter	Spine	PP1
+Y2	CaM_out	CaM	SD_Y2	CaM	nanomole/liter	Spine	CaM
+Y3	D32_out	D32	SD_Y3	D32	nanomole/liter	Spine	D32
